@@ -1,4 +1,4 @@
-package.path = package.path .. "~\\AppData\\Local\\nvim"
+package.path = package.path .. "C:\\Users\\Joshua\\AppData\\Local\\nvim\\?.lua"
 require('plugins')
 require('vim-opts')
 
@@ -30,6 +30,7 @@ vim.g.mapleader = ' '
 local options = { noremap = true }
 
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', options)
+map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").git_files()<cr>', options)
 map('n', '<leader>n', '<cmd>NvimTreeToggle<cr>', options)
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', options)
 map('n', '<C-t>', '<cmd>lua require"floaterm".open({command="powershell"})<cr>', options)
