@@ -6,7 +6,7 @@ vim.call('plug#begin')
 	Plug 'kyazdani42/nvim-tree.lua'
 	Plug 'Mofiqul/dracula.nvim'
 	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-	Plug 'doums/floaterm.nvim'
+	Plug 'voldikss/vim-floaterm'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'nvim-lua/plenary.nvim'
@@ -22,6 +22,8 @@ vim.call('plug#begin')
 	Plug 'hrsh7th/cmp-path'
 	Plug 'hrsh7th/cmp-cmdline'
 	Plug 'hrsh7th/nvim-cmp'
+	Plug 'L3MON4D3/LuaSnip'
+	Plug 'saadparwaiz1/cmp_luasnip'
 vim.call('plug#end')
 
 

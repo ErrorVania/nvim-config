@@ -12,3 +12,6 @@ vim.opt.expandtab = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
+vim.g.floaterm_shell = 'powershell'
+
+vim.cmd("set completeopt=menu,menuone,noselect")
