@@ -2,17 +2,16 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
 	Plug 'kyazdani42/nvim-web-devicons'
-        Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
-        Plug 'kyazdani42/nvim-tree.lua'
-        Plug 'Mofiqul/dracula.nvim'
-        Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-        Plug 'doums/floaterm.nvim'
-        Plug 'vim-airline/vim-airline'
-        Plug 'vim-airline/vim-airline-themes'
-        Plug 'nvim-lua/plenary.nvim'
-        Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
-        Plug 'kdheepak/lazygit.nvim'
---	Plug('neoclide/coc.nvim', { branch= 'release' })
+	Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
+	Plug 'kyazdani42/nvim-tree.lua'
+	Plug 'Mofiqul/dracula.nvim'
+	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+	Plug 'doums/floaterm.nvim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
+	Plug 'kdheepak/lazygit.nvim'
 	Plug 'williamboman/nvim-lsp-installer'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'jackguo380/vim-lsp-cxx-highlight'
