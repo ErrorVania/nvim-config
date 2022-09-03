@@ -18,10 +18,14 @@ local handlers = {
 }
 
 
-
+local luadev = require("lua-dev").setup({
+	lspconfig = {
+		capabilities = caps,
+		handlers = handlers
+	}
+})
 conf.sumneko_lua.setup{
-	capabilities = caps,
-	handlers = handlers
+	luadev
 }
 
 

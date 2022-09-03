@@ -17,7 +17,23 @@ require("nvim-treesitter.configs").setup {
 	},
 }
 
+require("which-key").setup{
+	window = {
+		border = "single"
+	}
+}
+
+require("nvim-autopairs").setup{}
+require("trouble").setup{}
+require("lualine").setup()
+require("alpha").setup(require("alpha.themes.startify").config)
+
 local cmp = require("cmp")
+
+cmp.event:on(
+	'confirm_donw',
+	require("nvim-autopairs.completion.cmp").on_confirm_done()
+)
 
 cmp.setup({
 	snippet = {

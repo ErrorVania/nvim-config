@@ -7,8 +7,9 @@ vim.call('plug#begin')
 	Plug 'Mofiqul/dracula.nvim'
 	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 	Plug 'voldikss/vim-floaterm'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	-- Plug 'vim-airline/vim-airline'
+	-- Plug 'vim-airline/vim-airline-themes'
+	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
 	Plug 'kdheepak/lazygit.nvim'
@@ -24,6 +25,11 @@ vim.call('plug#begin')
 	Plug 'hrsh7th/nvim-cmp'
 	Plug 'L3MON4D3/LuaSnip'
 	Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'folke/which-key.nvim'
+	Plug 'windwp/nvim-autopairs'
+	Plug 'folke/lua-dev.nvim'
+	Plug 'folke/trouble.nvim'
+	Plug 'goolord/alpha-nvim'
 vim.call('plug#end')
 
 
