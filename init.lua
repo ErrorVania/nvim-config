@@ -1,17 +1,14 @@
+package.path = package.path .. "C:\\Users\\Joshua\\AppData\\Local\\nvim\\?.lua"
 require('plugins')
 require('vim-opts')
-require("lspconfigs")
-require("keymaps")
 
 require("bufferline").setup{}
 require("gitsigns").setup()
 require("nvim-tree").setup()
 require("Comment").setup()
 require("nvim-lsp-installer").setup{}
-require("toggleterm").setup{
-	direction = "float"
-}
 
+require("lspconfigs")
 
 require("nvim-treesitter.configs").setup {
 	highlight = {
@@ -29,7 +26,7 @@ require("which-key").setup{
 require("nvim-autopairs").setup{}
 require("trouble").setup{}
 require("lualine").setup()
-require("alpha").setup(require("alpha.themes.dashboard").config)
+require("alpha").setup(require("alpha.themes.startify").config)
 
 local cmp = require("cmp")
 
@@ -74,3 +71,4 @@ cmp.setup.cmdline(":", {
 })
 
 
+require("keymaps")
