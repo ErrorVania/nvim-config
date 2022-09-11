@@ -26,7 +26,10 @@ require("which-key").setup{
 require("nvim-autopairs").setup{}
 require("trouble").setup{}
 require("lualine").setup()
-require("alpha").setup(require("alpha.themes.startify").config)
+require("alpha").setup(require("alpha.themes.dashboard").config)
+require("toggleterm").setup{
+	direction = 'float'
+}
 
 local cmp = require("cmp")
 
