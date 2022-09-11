@@ -19,11 +19,6 @@ map('n', '<leader>c', '<cmd>bd<cr>', options)
 
 map('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>', options)
 
-function script_path()
-	local str = debug.getinfo(2, "S").source:sub(2)
-	return str:match("(.*/)")
-end
-print(script_path())
 
 
 map('n', '<leader>Lc', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\init.lua<cr>', options)
