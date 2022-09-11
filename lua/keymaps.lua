@@ -7,8 +7,6 @@ vim.g.mapleader = ' '
 
 local options = { noremap = true }
 
-map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', options)
-map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").git_files()<cr>', options)
 map('n', '<leader>n', '<cmd>NvimTreeToggle<cr>', options)
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', options)
 map('n', '<C-t>', '<cmd>ToggleTerm<cr>', options)
@@ -18,7 +16,8 @@ map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', options)
 map('n', '<leader>c', '<cmd>bd<cr>', options)
 
 map('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>', options)
-
+map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', options)
+map('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
 
 
 map('n', '<leader>Lc', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\init.lua<cr>', options)
