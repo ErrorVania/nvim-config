@@ -11,7 +11,7 @@ map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>',
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").git_files()<cr>', options)
 map('n', '<leader>n', '<cmd>NvimTreeToggle<cr>', options)
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', options)
-map('n', '<C-t>', '<cmd>FloatermToggle<cr>', options)
+map('n', '<C-t>', '<cmd>ToggleTerm<cr>', options)
 map('n', '<C-s>', '<cmd>w<cr>', options)
 map('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', options)
 map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', options)
@@ -19,11 +19,8 @@ map('n', '<leader>c', '<cmd>bd<cr>', options)
 
 map('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>', options)
 
-<<<<<<< HEAD:lua/keymaps.lua
 
 
-=======
->>>>>>> parent of 946b079 (idk):keymaps.lua
 map('n', '<leader>Lc', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\init.lua<cr>', options)
 map('n', '<leader>Ll', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\lspconfigs.lua<cr>', options)
 map('n', '<leader>Lk', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\keymaps.lua<cr>', options)
