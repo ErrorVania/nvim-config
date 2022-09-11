@@ -28,7 +28,15 @@ conf.sumneko_lua.setup{
 	luadev
 }
 
+conf.jsonls.setup{
+	capabilities = caps,
+	handlers = handlers
+}
 
+conf.pyright.setup{
+	capabilities = caps,
+	handlers = handlers
+}
 
 conf.clangd.setup{
 	cmd = {

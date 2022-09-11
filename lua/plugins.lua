@@ -6,7 +6,7 @@ vim.call('plug#begin')
 	Plug 'kyazdani42/nvim-tree.lua'
 	Plug 'Mofiqul/dracula.nvim'
 	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-	Plug 'voldikss/vim-floaterm'
+	Plug 'akinsho/toggleterm.nvim'
 	-- Plug 'vim-airline/vim-airline'
 	-- Plug 'vim-airline/vim-airline-themes'
 	Plug 'nvim-lualine/lualine.nvim'
