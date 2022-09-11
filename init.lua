@@ -1,4 +1,3 @@
-package.path = package.path .. "C:\\Users\\Joshua\\AppData\\Local\\nvim\\?.lua"
 require('plugins')
 require('vim-opts')
 
