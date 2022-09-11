@@ -34,7 +34,7 @@ require("alpha").setup(require("alpha.themes.dashboard").config)
 local cmp = require("cmp")
 
 cmp.event:on(
-	'confirm_donw',
+	'confirm_done',
 	require("nvim-autopairs.completion.cmp").on_confirm_done()
 )
 
