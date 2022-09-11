@@ -32,4 +32,90 @@ vim.call('plug#begin')
 	Plug 'goolord/alpha-nvim'
 vim.call('plug#end')
 
+require("bufferline").setup{}
+require("gitsigns").setup()
+require("nvim-tree").setup()
+require("nvim-autopairs").setup{}
+require("trouble").setup{}
+require("lualine").setup()
+require("Comment").setup()
+
+require("toggleterm").setup{
+	direction = 'float'
+}
+
+require("alpha").setup(require("alpha.themes.dashboard").config)
+
+require("nvim-lsp-installer").setup{}
+
+require("nvim-treesitter.configs").setup {
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+}
+
+require("which-key").setup{
+	window = {
+		border = "single"
+	}
+}
+
+local cmp = require("cmp")
+
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end
+	},
+	mapping = cmp.mapping.preset.insert(
+		{
+			['<C-Space>'] = cmp.mapping.complete(),
+			['<cr>'] = cmp.mapping.confirm({ select = true})
+		}
+	),
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered()
+	},
+	sources = cmp.config.sources({{ name = "nvim_lsp" }, { name = "luasnip" }}, {{ name = "buffer" }})
+})
+
+cmp.setup.cmdline('/', {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = 'buffer' }
+	}
+})
+
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
+	})
+})
+
+cmp.event:on(
+	'confirm_done',
+	require("nvim-autopairs.completion.cmp").on_confirm_done()
+)
+
+
+require("which-key").register(
+	{
+		f = {
+			name = "File",
+			f = { "<cmd>Telescope find_files<cr>", "Find File" },
+			g = { "<cmd>Telescope git_files<cr>", "Git Files" }
+		}
+	},
+	{ prefix = "<leader>" }
+)
+
+
+
+
 
