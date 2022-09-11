@@ -30,6 +30,7 @@ vim.call('plug#begin')
 	Plug 'folke/lua-dev.nvim'
 	Plug 'folke/trouble.nvim'
 	Plug 'goolord/alpha-nvim'
+	Plug 'lewis6991/impatient.nvim'
 vim.call('plug#end')
 
 require("bufferline").setup{}
@@ -37,7 +38,14 @@ require("gitsigns").setup()
 require("nvim-tree").setup()
 require("nvim-autopairs").setup{}
 require("trouble").setup{}
-require("lualine").setup()
+require("impatient").enable_profile()
+require("lualine").setup{
+	options = {
+		disabled_filetypes = {
+			'alpha'
+		}
+	}
+}
 require("Comment").setup()
 
 require("toggleterm").setup{
