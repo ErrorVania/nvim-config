@@ -11,7 +11,7 @@ map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>',
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").git_files()<cr>', options)
 map('n', '<leader>n', '<cmd>NvimTreeToggle<cr>', options)
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', options)
-map('n', '<C-t>', '<cmd>ToggleTerm powershell<cr>', options)
+map('n', '<C-t>', '<cmd>FloatermToggle<cr>', options)
 map('n', '<C-s>', '<cmd>w<cr>', options)
 map('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', options)
 map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', options)
@@ -19,19 +19,13 @@ map('n', '<leader>c', '<cmd>bd<cr>', options)
 
 map('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>', options)
 
+<<<<<<< HEAD:lua/keymaps.lua
 
 
+=======
+>>>>>>> parent of 946b079 (idk):keymaps.lua
 map('n', '<leader>Lc', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\init.lua<cr>', options)
-
-local wk = require('which-key')
-wk.register{
-	['<C-t>'] = {
-		function()
-			local buf = vim.api.nvim_get_current_buf()
-			local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-			if ft == "floaterm" then
-				vim.cmd(':FloatermToggle<cr>')
-			end
-		end
-	}
-}
+map('n', '<leader>Ll', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\lspconfigs.lua<cr>', options)
+map('n', '<leader>Lk', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\keymaps.lua<cr>', options)
+map('n', '<leader>Lo', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\vim-opts.lua<cr>', options)
+map('n', '<leader>Lp', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\plugins.lua<cr>', options)
