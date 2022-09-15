@@ -9,7 +9,7 @@ local options = { noremap = true }
 
 map('n', '<leader>n', '<cmd>NvimTreeToggle<cr>', options)
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', options)
-map('n', '<C-t>', '<cmd>ToggleTerm<cr>', options)
+map('n', '<C-t>', '<cmd>TermExec cmd="pwsh & exit"<cr>', options)
 map('n', '<C-s>', '<cmd>w<cr>', options)
 map('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', options)
 map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', options)

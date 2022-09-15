@@ -47,7 +47,6 @@ require("lualine").setup{
 	}
 }
 require("Comment").setup()
-
 require("toggleterm").setup{
 	direction = 'float'
 }
@@ -117,7 +116,8 @@ require("which-key").register(
 		f = {
 			name = "File",
 			f = { "<cmd>Telescope find_files<cr>", "Find File" },
-			g = { "<cmd>Telescope git_files<cr>", "Git Files" }
+			g = { "<cmd>Telescope git_files<cr>", "Git Files" },
+			h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" }
 		}
 	},
 	{ prefix = "<leader>" }

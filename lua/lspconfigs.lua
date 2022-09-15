@@ -48,3 +48,12 @@ conf.cmake.setup{
 	handlers = handlers
 }
 
+conf.pyright.setup{
+	capabilities = caps,
+	handlers = handlers
+}
+
+conf.jsonls.setup{
+	capabilities = caps,
+	handlers = handlers
+}
