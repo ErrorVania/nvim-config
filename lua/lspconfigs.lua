@@ -37,7 +37,8 @@ conf.clangd.setup{
 		"--all-scopes-completion",
 		"--background-index",
 		"--header-insertion=never",
-		"--query-driver=C:\\Users\\Joshua\\source\\repos\\billx\\toolchain\\bin\\arm-linux-gnueabihf-g++.exe"
+--		"--query-driver=C:\\Users\\Joshua\\source\\repos\\billx\\toolchain\\bin\\arm-linux-gnueabihf-g++.exe"
+		"--query-driver=*"
 	},
 	handlers = handlers,
 	capabilities = caps

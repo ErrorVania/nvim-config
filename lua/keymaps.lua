@@ -20,8 +20,7 @@ map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', options)
 map('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
 
 
-map('n', '<leader>Lc', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\init.lua<cr>', options)
-map('n', '<leader>Ll', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\lspconfigs.lua<cr>', options)
-map('n', '<leader>Lk', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\keymaps.lua<cr>', options)
-map('n', '<leader>Lo', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\vim-opts.lua<cr>', options)
-map('n', '<leader>Lp', '<cmd>edit C:\\Users\\Joshua\\AppData\\Local\\nvim\\plugins.lua<cr>', options)
+map('n', '<C-h>', '<C-W>h', options)
+map('n', '<C-j>', '<C-W>j', options)
+map('n', '<C-k>', '<C-W>k', options)
+map('n', '<C-l>', '<C-W>l', options)
