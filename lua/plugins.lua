@@ -64,7 +64,7 @@ require('packer').startup(function(use)
 	use { 'williamboman/mason-lspconfig.nvim', config = function() require('mason-lspconfig').setup() end }
 
 	use 'jackguo380/vim-lsp-cxx-highlight'
-	use 'folke/trouble.nvim'
+	use { 'folke/trouble.nvim', config = function() require('trouble').setup() end }
 
 
 	if packer_bootstrap then
@@ -82,7 +82,6 @@ end
 
 --[[
 require("nvim-autopairs").setup{}
-require("trouble").setup{}
 
 local cmp = require("cmp")
 
