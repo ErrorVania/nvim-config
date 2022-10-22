@@ -41,10 +41,10 @@ require('packer').startup(function(use)
 				{
 					filetype = 'NvimTree',
 					text = function()
-						return vim.fn.getcwd()
+						return "Explorer"
 					end,
 					highlight = 'Directory',
-					text_align = 'left'
+					text_align = 'center'
 				}
 			}
 		}
