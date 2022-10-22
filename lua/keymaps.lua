@@ -5,24 +5,26 @@ local map = vim.keymap.set
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
-local options = { noremap = true }
+local nmap = function(mode, keys, command)
+    return map(mode, keys, command, { noremap = true })
+end
 
-map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', options)
-map('n', '<C-t>', '<cmd>ToggleTerm<cr>', options)
-map('n', '<C-s>', '<cmd>w<cr>', options)
-map('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', options)
-map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', options)
-map('n', '<leader>x', '<cmd>bd<cr>', options)
+nmap('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+nmap('n', '<C-t>', '<cmd>ToggleTerm<cr>')
+nmap('n', '<C-s>', '<cmd>w<cr>')
+nmap('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>')
+nmap('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>')
+nmap('n', '<leader>c', '<cmd>bd<cr>')
 
-map('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>', options)
-map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', options)
-map('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
+nmap('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>')
+nmap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+nmap('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
 
-map('n', '<C-h>', '<C-W>h', options)
-map('n', '<C-j>', '<C-W>j', options)
-map('n', '<C-k>', '<C-W>k', options)
-map('n', '<C-l>', '<C-W>l', options)
+nmap('n', '<C-h>', '<C-W>h')
+nmap('n', '<C-j>', '<C-W>j')
+nmap('n', '<C-k>', '<C-W>k')
+nmap('n', '<C-l>', '<C-W>l')
 
 
 require('which-key').register(
@@ -32,10 +34,6 @@ require('which-key').register(
 			f = { "<cmd>Telescope find_files<cr>", "Find File" },
 			g = { "<cmd>Telescope git_files<cr>", "Git Files" },
 			h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" }
-		},
-		c = {
-			name = "Build/Run",
-			b = { '<cmd>TermExec cmd="cmake --build build/" direction=tab<cr>', "Run cmake build in 'build/'"}
 		},
 		l = {
 			name = "LSP",
