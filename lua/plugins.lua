@@ -65,6 +65,10 @@ require('packer').startup(function(use)
 
 	use 'jackguo380/vim-lsp-cxx-highlight'
 	use { 'folke/trouble.nvim', config = function() require('trouble').setup() end }
+	use { 'lukas-reineke/indent-blankline.nvim', config = function() require('indent_blankline').setup{
+		show_end_of_line = true,
+		space_char_blankline = ' '
+	} end }
 
 
 	if packer_bootstrap then
@@ -77,6 +81,8 @@ function _lazygit_toggle()
 	local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
 	lazygit:toggle()
 end
+-- vim.opt.list = true,
+-- vim.opt.listchars:append 'eol:↴'
 
 
 
