@@ -2,14 +2,7 @@
 
 vim.call('plug#begin')
 -- Everything else
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/cmp-path'
-	Plug 'hrsh7th/cmp-cmdline'
-	Plug 'hrsh7th/nvim-cmp'
-	Plug 'L3MON4D3/LuaSnip'
-	Plug 'saadparwaiz1/cmp_luasnip'
-	Plug 'windwp/nvim-autopairs'
+	
 	Plug 'folke/lua-dev.nvim'
 vim.call('plug#end') ]]
 
@@ -84,6 +77,38 @@ require('packer').startup(function(use)
 		space_char_blankline = ' '
 	} end }
 
+	-- i have no idea what im doing from this point on
+	use { 'hrsh7th/nvim-cmp', config = function()
+		local cmp = require('cmp')
+		cmp.setup{
+			snippet = {
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body)
+				end
+			},
+			mapping = cmp.mapping.preset.insert(
+				{
+					['<C-Space>'] = cmp.mapping.complete(),
+					['<cr>'] = cmp.mapping.confirm({ select = true})
+				}
+			),
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered()
+			},
+			sources = cmp.config.sources({{ name = "nvim_lsp" }, { name = "luasnip" }}, {{ name = "buffer" }})
+		}
+	end}
+
+	use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup{} end }
+
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use 'L3MON4D3/LuaSnip'
+	use 'saadparwaiz1/cmp_luasnip'
+
 
 	if packer_bootstrap then
 	   require('packer').sync()
@@ -95,35 +120,8 @@ function _lazygit_toggle()
 	local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
 	lazygit:toggle()
 end
--- vim.opt.list = true,
--- vim.opt.listchars:append 'eol:↴'
-
-
-
---[[
-require("nvim-autopairs").setup{}
 
 local cmp = require("cmp")
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end
-	},
-	mapping = cmp.mapping.preset.insert(
-		{
-			['<C-Space>'] = cmp.mapping.complete(),
-			['<cr>'] = cmp.mapping.confirm({ select = true})
-		}
-	),
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered()
-	},
-	sources = cmp.config.sources({{ name = "nvim_lsp" }, { name = "luasnip" }}, {{ name = "buffer" }})
-})
-
 cmp.setup.cmdline('/', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
@@ -144,11 +142,5 @@ cmp.event:on(
 	'confirm_done',
 	require("nvim-autopairs.completion.cmp").on_confirm_done()
 )
-
-
- ]]
-
-
-
 
 

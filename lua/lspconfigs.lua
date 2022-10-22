@@ -1,12 +1,4 @@
---[[ local conf = require("lspconfig")
-local caps = vim.lsp.protocol.make_client_capabilities()
-caps = require("cmp_nvim_lsp").update_capabilities(caps)
-
-local handlers = {
-		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-}
-
-
+--[[
 local luadev = require("lua-dev").setup({
 	lspconfig = {
 		capabilities = caps,
@@ -16,8 +8,6 @@ local luadev = require("lua-dev").setup({
 conf.sumneko_lua.setup{
 	luadev
 }
-
-
 
 conf.clangd.setup{
 	cmd = {
@@ -32,10 +22,9 @@ conf.clangd.setup{
 	handlers = handlers,
 	capabilities = caps
 }
-
  ]]
 
-local caps = vim.lsp.protocol.make_client_capabilities()
+local caps = require('cmp_nvim_lsp').default_capabilities()
 local handlers = {
 		['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
 }
