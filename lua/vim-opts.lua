@@ -1,9 +1,7 @@
 vim.opt.timeoutlen = 0
--- vim.cmd('colorscheme dracula')
 vim.cmd('colorscheme tokyonight')
 vim.wo.number = true
 vim.g.encoding = 'UTF-8'
--- vim.g.airline_theme = "onedark"
 vim.opt.termguicolors = true
 vim.g.nobackup = true
 vim.g.nowritebackup = true
