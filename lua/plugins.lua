@@ -1,12 +1,4 @@
---[[ local Plug = vim.fn['plug#']
-
-vim.call('plug#begin')
--- Everything else
-	
-	Plug 'folke/lua-dev.nvim'
-vim.call('plug#end') ]]
-
--- bootstrap packer
+-- bootstrap packer - requires git
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
