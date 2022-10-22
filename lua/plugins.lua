@@ -35,7 +35,21 @@ require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 -- The very important stuff
 	use { 'lewis6991/impatient.nvim', config = function() require('impatient') end }
-	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons', config = function() require('bufferline').setup() end }
+	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons', config = function() require('bufferline').setup{
+		options = {
+			offsets = {
+				{
+					filetype = 'NvimTree',
+					text = function()
+						return vim.fn.getcwd()
+					end,
+					highlight = 'Directory',
+					text_align = 'left'
+				}
+			}
+		}
+
+	} end }
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('lualine').setup{ options = { disabled_filetypes = { 'alpha' } } } end }
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim' }
 	use { "nvim-telescope/telescope-file-browser.nvim", config = function() require('telescope').load_extension 'file_browser' end }
