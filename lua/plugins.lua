@@ -6,25 +6,26 @@ vim.call('plug#begin')
 	Plug 'joshdick/onedark.vim'
 	Plug 'folke/tokyonight.nvim'
 -- The very important stuff
-	Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
+	Plug 'lewis6991/impatient.nvim'
 	Plug 'nvim-lualine/lualine.nvim'
+	Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
 	Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
 	Plug 'nvim-telescope/telescope-file-browser.nvim'
-	Plug 'lewis6991/impatient.nvim'
 	Plug 'folke/which-key.nvim'
 	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'goolord/alpha-nvim'
--- Everything else
-	Plug 'kyazdani42/nvim-web-devicons'
+-- Non-LSP Stuff
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'kyazdani42/nvim-tree.lua'
 	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+	Plug 'kyazdani42/nvim-tree.lua'
+	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'akinsho/toggleterm.nvim'
+	Plug 'numToStr/Comment.nvim'
 	Plug 'kdheepak/lazygit.nvim'
+-- Everything else
 	Plug 'williamboman/nvim-lsp-installer'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'jackguo380/vim-lsp-cxx-highlight'
-	Plug 'numToStr/Comment.nvim'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
