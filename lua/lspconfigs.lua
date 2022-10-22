@@ -33,23 +33,18 @@ conf.clangd.setup{
 	capabilities = caps
 }
 
-conf.cmake.setup{
-	capabilities = caps,
-	handlers = handlers
-}
-
-conf.pyright.setup{
-	capabilities = caps,
-	handlers = handlers
-}
-
-conf.jsonls.setup{
-	capabilities = caps,
-	handlers = handlers
-}
-
-conf.jdtls.setup{
-	capabilities = caps,
-	handlers = handlers
-}
  ]]
+
+local caps = vim.lsp.protocol.make_client_capabilities()
+local handlers = {
+		['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
+}
+
+require('mason-lspconfig').setup_handlers{
+	function (server_name)
+		require('lspconfig')[server_name].setup{
+			capabilities = caps,
+			handlers = handlers
+		}
+	end
+}
