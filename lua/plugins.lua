@@ -1,20 +1,29 @@
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-	Plug 'kyazdani42/nvim-web-devicons'
-	Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
-	Plug 'kyazdani42/nvim-tree.lua'
+-- Themes
 	Plug 'Mofiqul/dracula.nvim'
+	Plug 'joshdick/onedark.vim'
+	Plug 'folke/tokyonight.nvim'
+-- The very important stuff
+	Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
+	Plug 'nvim-lualine/lualine.nvim'
+	Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
+	Plug 'nvim-telescope/telescope-file-browser.nvim'
+	Plug 'lewis6991/impatient.nvim'
+	Plug 'folke/which-key.nvim'
+	Plug 'lewis6991/gitsigns.nvim'
+	Plug 'goolord/alpha-nvim'
+-- Everything else
+	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'kyazdani42/nvim-tree.lua'
 	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 	Plug 'akinsho/toggleterm.nvim'
-	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
 	Plug 'kdheepak/lazygit.nvim'
 	Plug 'williamboman/nvim-lsp-installer'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'jackguo380/vim-lsp-cxx-highlight'
-	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'numToStr/Comment.nvim'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
@@ -23,23 +32,18 @@ vim.call('plug#begin')
 	Plug 'hrsh7th/nvim-cmp'
 	Plug 'L3MON4D3/LuaSnip'
 	Plug 'saadparwaiz1/cmp_luasnip'
-	Plug 'folke/which-key.nvim'
 	Plug 'windwp/nvim-autopairs'
 	Plug 'folke/lua-dev.nvim'
 	Plug 'folke/trouble.nvim'
-	Plug 'goolord/alpha-nvim'
-	Plug 'lewis6991/impatient.nvim'
-	Plug  'joshdick/onedark.vim'
-	Plug 'folke/tokyonight.nvim'
-	Plug 'dbgx/lldb.nvim'
 vim.call('plug#end')
 
+require("impatient")
+require('telescope').load_extension "file_browser" --Configure!
 require("bufferline").setup{}
 require("gitsigns").setup()
 require("nvim-tree").setup()
 require("nvim-autopairs").setup{}
 require("trouble").setup{}
-require("impatient").enable_profile()
 require("lualine").setup{
 	options = {
 		disabled_filetypes = {
