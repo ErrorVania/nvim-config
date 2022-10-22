@@ -2,19 +2,8 @@ local conf = require("lspconfig")
 local caps = vim.lsp.protocol.make_client_capabilities()
 caps = require("cmp_nvim_lsp").update_capabilities(caps)
 
-local border = {
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-      {"*", "FloatBorder"},
-}
-
 local handlers = {
-		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 }
 
 
@@ -55,6 +44,11 @@ conf.pyright.setup{
 }
 
 conf.jsonls.setup{
+	capabilities = caps,
+	handlers = handlers
+}
+
+conf.jdtls.setup{
 	capabilities = caps,
 	handlers = handlers
 }

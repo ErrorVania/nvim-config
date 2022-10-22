@@ -7,8 +7,6 @@ vim.call('plug#begin')
 	Plug 'Mofiqul/dracula.nvim'
 	Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 	Plug 'akinsho/toggleterm.nvim'
-	-- Plug 'vim-airline/vim-airline'
-	-- Plug 'vim-airline/vim-airline-themes'
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
@@ -31,6 +29,9 @@ vim.call('plug#begin')
 	Plug 'folke/trouble.nvim'
 	Plug 'goolord/alpha-nvim'
 	Plug 'lewis6991/impatient.nvim'
+	Plug  'joshdick/onedark.vim'
+	Plug 'folke/tokyonight.nvim'
+	Plug 'dbgx/lldb.nvim'
 vim.call('plug#end')
 
 require("bufferline").setup{}
@@ -118,6 +119,17 @@ require("which-key").register(
 			f = { "<cmd>Telescope find_files<cr>", "Find File" },
 			g = { "<cmd>Telescope git_files<cr>", "Git Files" },
 			h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" }
+		},
+		c = {
+			name = "Build/Run",
+			b = { '<cmd>TermExec cmd="cmake --build build/" direction=tab<cr>', "Run cmake build in 'build/'"}
+		},
+		l = {
+			name = "LSP",
+			d = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to Declaration' },
+			D = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to Definition' },
+			r = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Go to References' },
+			R = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename' }
 		}
 	},
 	{ prefix = "<leader>" }
