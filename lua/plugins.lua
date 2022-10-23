@@ -42,12 +42,17 @@ require('packer').startup(function(use)
 	use { 'goolord/alpha-nvim', config = function () require'alpha'.setup(require'alpha.themes.dashboard'.config) end }
 	use { 'folke/which-key.nvim', config = function() require('which-key').setup{ window = { border = 'single' } } end }
 -- Non-LSP Stuff
+	use 'p00f/nvim-ts-rainbow'
 	use { 'nvim-treesitter/nvim-treesitter', config = function()
 		require('nvim-treesitter.configs').setup{
 			auto_install = true,
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false
+			},
+			rainbow = {
+				enable = true,
+				extended_mode = true
 			}
 		}
 		end,
