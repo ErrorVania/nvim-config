@@ -18,6 +18,7 @@ require('packer').startup(function(use)
 	use 'Mofiqul/dracula.nvim'
 	use 'joshdick/onedark.vim'
 	use 'folke/tokyonight.nvim'
+	use 'catppuccin/nvim'
 -- The very important stuff
 	use { 'lewis6991/impatient.nvim', config = function() require('impatient') end }
 	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons', config = function() require('bufferline').setup{
@@ -26,9 +27,15 @@ require('packer').startup(function(use)
 				{
 					filetype = 'NvimTree',
 					text = function()
-						return "Explorer"
+						return 'Explorer'
 					end,
 					highlight = 'Directory',
+					text_align = 'center'
+				}, {
+					filetype = 'undotree',
+					text = function()
+						return 'UndoTree'
+					end,
 					text_align = 'center'
 				}
 			}
@@ -105,6 +112,13 @@ require('packer').startup(function(use)
 	use 'hrsh7th/cmp-cmdline'
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
+	use { 'ray-x/lsp_signature.nvim', config = function() require('lsp_signature').setup{} end }
+	use { 'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix' }
+	use 'mbbill/undotree'
+	use { 'ahmedkhalf/project.nvim', config = function()
+		require('project_nvim').setup{}
+		require('telescope').load_extension('projects')
+	end }
 
 
 	if packer_bootstrap then
