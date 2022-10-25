@@ -12,7 +12,14 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-require('packer').init{
+local status, packer = pcall(require, 'packer')
+if not status then
+	print "require('packer') failed"
+	os.exit()
+end
+
+
+packer.init{
 	display = {
 		open_fn = function()
 			return require('packer.util').float{ border = 'rounded' }
@@ -20,7 +27,7 @@ require('packer').init{
 	}
 }
 
-require('packer').startup(function(use)
+packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 -- Themes
 	use 'Mofiqul/dracula.nvim'
@@ -90,7 +97,14 @@ require('packer').startup(function(use)
 	} end }
 
 	-- i have no idea what im doing from this point on
-	use { 'hrsh7th/nvim-cmp', config = function()
+	use { 'hrsh7th/nvim-cmp', requires = {
+		{ 'hrsh7th/cmp-nvim-lsp' },
+		{ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+		{ 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+		{ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+		{ 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+	
+	},config = function()
 		local cmp = require('cmp')
 		cmp.setup{
 			snippet = {
@@ -114,12 +128,7 @@ require('packer').startup(function(use)
 
 	use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup{} end }
 
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
 	use 'L3MON4D3/LuaSnip'
-	use 'saadparwaiz1/cmp_luasnip'
 	use { 'ray-x/lsp_signature.nvim', config = function() require('lsp_signature').setup{} end }
 	use { 'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix' }
 	use 'mbbill/undotree'
@@ -135,9 +144,14 @@ require('packer').startup(function(use)
 
 
 	if packer_bootstrap then
-	   require('packer').sync()
+	   packer.sync()
 	end
 end )
+
+if packer_bootstrap then
+	print 'Bootstrapped packer, please restart nvim'
+	return
+end
 
 function _lazygit_toggle()
 	local Terminal  = require('toggleterm.terminal').Terminal
