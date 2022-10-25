@@ -12,6 +12,14 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+require('packer').init{
+	display = {
+		open_fn = function()
+			return require('packer.util').float{ border = 'rounded' }
+		end
+	}
+}
+
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 -- Themes
@@ -42,7 +50,7 @@ require('packer').startup(function(use)
 		}
 
 	} end }
-	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('lualine').setup{ options = { disabled_filetypes = { 'alpha' } } } end }
+	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('lualine').setup{ options = { disabled_filetypes = { 'alpha' }, globalstatus = true } } end }
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim' }
 	use { "nvim-telescope/telescope-file-browser.nvim", config = function() require('telescope').load_extension 'file_browser' end }
 	use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
@@ -116,7 +124,12 @@ require('packer').startup(function(use)
 	use { 'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix' }
 	use 'mbbill/undotree'
 	use { 'ahmedkhalf/project.nvim', config = function()
-		require('project_nvim').setup{}
+		require('project_nvim').setup{
+			patterns = {
+				'.git', 'Makefile', 'CMakeLists.txt'
+			},
+			show_hidden = false
+		}
 		require('telescope').load_extension('projects')
 	end }
 
