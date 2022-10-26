@@ -14,10 +14,7 @@ packer.startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'catppuccin/nvim'
     -- The very important stuff
-    use {
-        'lewis6991/impatient.nvim',
-        config = [[require('impatient')]]
-    }
+    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
     use {
         'akinsho/bufferline.nvim',
         tag = "v3.*",
@@ -28,16 +25,12 @@ packer.startup(function(use)
                     offsets = {
                         {
                             filetype = 'NvimTree',
-                            text = function()
-                                return 'Explorer'
-                            end,
+                            text = "Explorer",
                             highlight = 'Directory',
                             text_align = 'center'
                         }, {
                             filetype = 'undotree',
-                            text = function()
-                                return 'UndoTree'
-                            end,
+                            text = "UndoTree",
                             text_align = 'center'
                         }
                     }
@@ -57,12 +50,19 @@ packer.startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
-        requires = 'nvim-lua/plenary.nvim'
-    }
-    use {
-        "nvim-telescope/telescope-file-browser.nvim",
+        requires = {
+        	'nvim-lua/plenary.nvim',
+        	'nvim-telescope/telescope-file-browser.nvim',
+			'ahmedkhalf/project.nvim'
+		},
         config = function()
-            require('telescope').load_extension 'file_browser'
+			local telescope = require('telescope')
+			require('project_nvim').setup {
+               	patterns = {'.git', 'Makefile', 'CMakeLists.txt'},
+               	show_hidden = false
+            }
+			telescope.load_extension('projects')
+			telescope.load_extension('file_browser')
         end
     }
     use {
@@ -82,9 +82,9 @@ packer.startup(function(use)
         end
     }
     -- Non-LSP Stuff
-    use 'p00f/nvim-ts-rainbow'
     use {
         'nvim-treesitter/nvim-treesitter',
+        requires = {'p00f/nvim-ts-rainbow', after= 'nvim-treesitter'},
         config = function()
             require('nvim-treesitter.configs').setup {
                 auto_install = true,
@@ -151,8 +151,8 @@ packer.startup(function(use)
             {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
             {'hrsh7th/cmp-path', after = 'nvim-cmp'},
             {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
-            {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'}
-
+            {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
+			{'windwp/nvim-autopairs', config = [[require('nvim-autopairs').setup{}]]}
         },
         config = function()
             local cmp = require('cmp')
@@ -188,11 +188,6 @@ packer.startup(function(use)
        	end
     }
 
-    use {
-        'windwp/nvim-autopairs',
-        config = [[require('nvim-autopairs').setup{}]]
-    }
-
     use 'L3MON4D3/LuaSnip'
     use {
         'ray-x/lsp_signature.nvim',
@@ -200,18 +195,6 @@ packer.startup(function(use)
     }
     use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
     use 'mbbill/undotree'
-    use {
-        'ahmedkhalf/project.nvim',
-        config = function()
-            require('project_nvim').setup {
-                patterns = {'.git', 'Makefile', 'CMakeLists.txt'},
-                show_hidden = false
-            }
-            require('telescope').load_extension('projects')
-        end
-    }
-
-    if packer_bootstrapped then packer.sync() end
 end)
 
 
