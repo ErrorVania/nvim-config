@@ -1,14 +1,13 @@
 -- bootstrap packer - requires git
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = fn.stdpath('data') ..
-                             '/site/pack/packer/start/packer.nvim'
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({
+        fn.system{
             'git', 'clone', '--depth', '1',
             'https://github.com/wbthomason/packer.nvim', install_path
-        })
-        vim.cmd [[packadd packer.nvim]]
+        }
+        vim.cmd[[packadd packer.nvim]]
         return true
     end
     return false
@@ -40,7 +39,7 @@ packer.startup(function(use)
     -- The very important stuff
     use {
         'lewis6991/impatient.nvim',
-        config = function() require('impatient') end
+        config = [[require('impatient')]]
     }
     use {
         'akinsho/bufferline.nvim',
@@ -197,18 +196,29 @@ packer.startup(function(use)
                     {name = "nvim_lsp"}, {name = "luasnip"}
                 }, {{name = "buffer"}})
             }
-        end
+			cmp.setup.cmdline('/', {
+    			mapping = cmp.mapping.preset.cmdline(),
+    			sources = {{name = 'buffer'}}
+			})
+
+			cmp.setup.cmdline(":", {
+    			mapping = cmp.mapping.preset.cmdline(),
+    			sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+			})
+
+			cmp.event:on('confirm_done', require("nvim-autopairs.completion.cmp").on_confirm_done())
+       	end
     }
 
     use {
         'windwp/nvim-autopairs',
-        config = function() require('nvim-autopairs').setup {} end
+        config = [[require('nvim-autopairs').setup{}]]
     }
 
     use 'L3MON4D3/LuaSnip'
     use {
         'ray-x/lsp_signature.nvim',
-        config = function() require('lsp_signature').setup {} end
+        config = [[require('lsp_signature').setup{}]]
     }
     use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
     use 'mbbill/undotree'
@@ -242,16 +252,4 @@ function _lazygit_toggle()
 end
 
 local cmp = require("cmp")
-cmp.setup.cmdline('/', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {{name = 'buffer'}}
-})
-
-cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
-})
-
-cmp.event:on('confirm_done',
-             require("nvim-autopairs.completion.cmp").on_confirm_done())
 
