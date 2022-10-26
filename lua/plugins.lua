@@ -1,26 +1,3 @@
--- bootstrap packer - requires git
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system{
-            'git', 'clone', '--depth', '1',
-            'https://github.com/wbthomason/packer.nvim', install_path
-        }
-        vim.cmd[[packadd packer.nvim]]
-        return true
-    end
-    return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-local status, packer = pcall(require, 'packer')
-if not status then
-    print "require('packer') failed"
-    os.exit()
-end
-
 packer.init {
     display = {
         open_fn = function()
@@ -111,6 +88,7 @@ packer.startup(function(use)
         config = function()
             require('nvim-treesitter.configs').setup {
                 auto_install = true,
+                sync_install = true,
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false
@@ -233,23 +211,7 @@ packer.startup(function(use)
         end
     }
 
-    if packer_bootstrap then packer.sync() end
+    if packer_bootstrapped then packer.sync() end
 end)
 
-if packer_bootstrap then
-    print 'Bootstrapped packer, please restart nvim'
-    return
-end
-
-function _lazygit_toggle()
-    local Terminal = require('toggleterm.terminal').Terminal
-    local lazygit = Terminal:new({
-        cmd = "lazygit",
-        hidden = true,
-        direction = 'float'
-    })
-    lazygit:toggle()
-end
-
-local cmp = require("cmp")
 
