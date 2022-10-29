@@ -1,4 +1,7 @@
 packer.init {
+	git = {
+		clone_timeout = 300
+	},
     display = {
         open_fn = function()
             return require('packer.util').float {border = 'rounded'}
@@ -195,6 +198,9 @@ packer.startup(function(use)
     }
     use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
     use 'mbbill/undotree'
+    use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', config = [[require('todo-comments').setup{}]]}
+    use {'akinsho/git-conflict.nvim', tag = '*', config = [[require('git-conflict').setup()]]}
+    use 'stevearc/dressing.nvim'
 end)
 
 
