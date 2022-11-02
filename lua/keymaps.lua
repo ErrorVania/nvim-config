@@ -26,7 +26,7 @@ nmap('n', '<C-j>', '<C-W>j')
 nmap('n', '<C-k>', '<C-W>k')
 nmap('n', '<C-l>', '<C-W>l')
 
-function _lazygit_toggle()
+local function _lazygit_toggle()
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({
         cmd = "lazygit",

@@ -201,6 +201,7 @@ packer.startup(function(use)
     use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', config = [[require('todo-comments').setup{}]]}
     use {'akinsho/git-conflict.nvim', tag = '*', config = [[require('git-conflict').setup()]]}
     use 'stevearc/dressing.nvim'
+    use 'christoomey/vim-tmux-navigator'
 end)
 
 
