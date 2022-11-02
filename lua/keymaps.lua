@@ -26,7 +26,7 @@ nmap('n', '<C-j>', '<C-W>j')
 nmap('n', '<C-k>', '<C-W>k')
 nmap('n', '<C-l>', '<C-W>l')
 
-local function _lazygit_toggle()
+function _lazygit_toggle()
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({
         cmd = "lazygit",
@@ -34,6 +34,20 @@ local function _lazygit_toggle()
         direction = 'float'
     })
     lazygit:toggle()
+end
+
+function _edit_config_files()
+	local files = {
+		'/init.lua',
+		'/lua/plugins.lua',
+		'/lua/lspconfigs.lua',
+		'/lua/vim-opts.lua',
+		'/lua/keymaps.lua'
+	}
+	for i, f in ipairs(files) do
+		local p = vim.fn.stdpath('config') .. f
+		vim.cmd('edit ' .. p)
+ 	end
 end
 
 
@@ -55,6 +69,10 @@ require('which-key').register(
 		g = {
 			name = "Git",
 			g = { '<cmd>lua _lazygit_toggle()<CR>', 'LazyGit' },
+		},
+		N = {
+			name = 'Neovim',
+			c = {'<cmd>lua _edit_config_files()<CR>', 'Edit all config files'}
 		}
 	},
 	{ prefix = "<leader>" }
