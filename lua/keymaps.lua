@@ -37,17 +37,21 @@ function _lazygit_toggle()
 end
 
 function _edit_config_files()
-	local files = {
-		'/init.lua',
-		'/lua/plugins.lua',
-		'/lua/lspconfigs.lua',
-		'/lua/vim-opts.lua',
-		'/lua/keymaps.lua'
-	}
-	for i, f in ipairs(files) do
-		local p = vim.fn.stdpath('config') .. f
-		vim.cmd('edit ' .. p)
- 	end
+	-- local files = {
+	-- 	'/init.lua',
+	-- 	'/lua/plugins.lua',
+	-- 	'/lua/lspconfigs.lua',
+	-- 	'/lua/vim-opts.lua',
+	-- 	'/lua/keymaps.lua'
+	-- }
+	-- for i, f in ipairs(files) do
+	-- 	local p = vim.fn.stdpath('config') .. f
+	-- 	vim.cmd('edit ' .. p)
+ -- 	end
+ 	require('telescope.builtin').find_files{
+ 		cwd = vim.loop.fs_realpath(vim.fn.stdpath('config')),
+ 		follow = true
+ 	}
 end
 
 
