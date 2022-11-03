@@ -36,7 +36,8 @@ packer.startup(function(use)
                             text = "UndoTree",
                             text_align = 'center'
                         }
-                    }
+                    },
+                	diagnostics = 'nvim_lsp'
                 }
             }
         end
@@ -155,6 +156,7 @@ packer.startup(function(use)
             {'hrsh7th/cmp-path', after = 'nvim-cmp'},
             {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
             {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
+            {'L3MON4D3/LuaSnip', after = 'nvim-cmp'},
 			{'windwp/nvim-autopairs', config = [[require('nvim-autopairs').setup{}]]}
         },
         config = function()
@@ -191,7 +193,6 @@ packer.startup(function(use)
        	end
     }
 
-    use 'L3MON4D3/LuaSnip'
     use {
         'ray-x/lsp_signature.nvim',
         config = [[require('lsp_signature').setup{}]]
