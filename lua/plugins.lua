@@ -18,30 +18,7 @@ packer.startup(function(use)
     use 'catppuccin/nvim'
     -- The very important stuff
     use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
-    use {
-        'akinsho/bufferline.nvim',
-        tag = "v3.*",
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('bufferline').setup {
-                options = {
-                    offsets = {
-                        {
-                            filetype = 'NvimTree',
-                            text = "Explorer",
-                            highlight = 'Directory',
-                            text_align = 'center'
-                        }, {
-                            filetype = 'undotree',
-                            text = "UndoTree",
-                            text_align = 'center'
-                        }
-                    },
-                	diagnostics = 'nvim_lsp'
-                }
-            }
-        end
-    }
+    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
@@ -79,67 +56,18 @@ packer.startup(function(use)
             require'alpha'.setup(require'alpha.themes.dashboard'.config)
         end
     }
-    use {
-        'folke/which-key.nvim',
-        config = function()
-            require('which-key').setup {window = {border = 'single'}}
-        end
-    }
+    use 'folke/which-key.nvim'
     -- Non-LSP Stuff
     use {
         'nvim-treesitter/nvim-treesitter',
         requires = {'p00f/nvim-ts-rainbow', after= 'nvim-treesitter'},
-        config = function()
-            require('nvim-treesitter.configs').setup {
-                auto_install = true,
-                sync_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false
-                },
-                rainbow = {enable = true, extended_mode = true}
-            }
-        end,
         run = function()
             require('nvim-treesitter.install').update({with_sync = true})
         end
     }
     use {
         'nvim-tree/nvim-tree.lua',
-        requires = 'nvim-tree/nvim-web-devicons',
-        config = function()
-        	require('nvim-tree').setup{
-				sort_by = 'case_sensitive',
-				hijack_cursor = true,
-				view = {
-					adaptive_size = true,
-					mappings = {
-						list = {
-							{ key = { "<CR>", "o", "<2-LeftMouse>", "l" }, action = "edit" }
-						}
-					}
-				},
-				diagnostics = {
-					enable = true
-				},
-				filters = {
-					dotfiles = true,
-					custom = {
-						'^.git$'
-					}
-				},
-				renderer = {
-					highlight_opened_files = 'name',
-					indent_width = 4,
-					indent_markers = {
-						enable = true,
-					}
-				},
-				update_focused_file = {
-					enable = true
-				}
-			}
-    	end
+        requires = 'nvim-tree/nvim-web-devicons'
     }
     use {
         'numToStr/Comment.nvim',
@@ -191,38 +119,6 @@ packer.startup(function(use)
             {'L3MON4D3/LuaSnip', after = 'nvim-cmp'},
 			{'windwp/nvim-autopairs', config = [[require('nvim-autopairs').setup{}]]}
         },
-        config = function()
-            local cmp = require('cmp')
-            cmp.setup {
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<cr>'] = cmp.mapping.confirm({select = true})
-                }),
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered()
-                },
-                sources = cmp.config.sources({
-                    {name = "nvim_lsp"}, {name = "luasnip"}
-                }, {{name = "buffer"}})
-            }
-			cmp.setup.cmdline('/', {
-    			mapping = cmp.mapping.preset.cmdline(),
-    			sources = {{name = 'buffer'}}
-			})
-
-			cmp.setup.cmdline(":", {
-    			mapping = cmp.mapping.preset.cmdline(),
-    			sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
-			})
-
-			cmp.event:on('confirm_done', require("nvim-autopairs.completion.cmp").on_confirm_done())
-       	end
     }
 
     use {
@@ -235,6 +131,7 @@ packer.startup(function(use)
     use {'akinsho/git-conflict.nvim', tag = '*', config = [[require('git-conflict').setup()]]}
     use 'stevearc/dressing.nvim'
     use 'christoomey/vim-tmux-navigator'
+	use {"tiagovla/scope.nvim", config = function() require('scope').setup() end }
 end)
 
 
