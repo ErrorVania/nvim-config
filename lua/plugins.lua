@@ -107,7 +107,39 @@ packer.startup(function(use)
     use {
         'nvim-tree/nvim-tree.lua',
         requires = 'nvim-tree/nvim-web-devicons',
-        config = function() require('nvim-tree').setup() end
+        config = function()
+        	require('nvim-tree').setup{
+				sort_by = 'case_sensitive',
+				hijack_cursor = true,
+				view = {
+					adaptive_size = true,
+					mappings = {
+						list = {
+							{ key = { "<CR>", "o", "<2-LeftMouse>", "l" }, action = "edit" }
+						}
+					}
+				},
+				diagnostics = {
+					enable = true
+				},
+				filters = {
+					dotfiles = true,
+					custom = {
+						'^.git$'
+					}
+				},
+				renderer = {
+					highlight_opened_files = 'name',
+					indent_width = 4,
+					indent_markers = {
+						enable = true,
+					}
+				},
+				update_focused_file = {
+					enable = true
+				}
+			}
+    	end
     }
     use {
         'numToStr/Comment.nvim',
