@@ -140,6 +140,11 @@ packer.startup(function(use)
     use 'christoomey/vim-tmux-navigator'
 	use {"tiagovla/scope.nvim", config = function() require('scope').setup() end }
 	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
+	use {'RRethy/vim-illuminate', config = function()
+		require('illuminate').configure{
+			providers = {'lsp', 'treesitter'}
+		}
+	end }
 end)
 
 return M
