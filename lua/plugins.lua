@@ -132,6 +132,6 @@ packer.startup(function(use)
     use 'stevearc/dressing.nvim'
     use 'christoomey/vim-tmux-navigator'
 	use {"tiagovla/scope.nvim", config = function() require('scope').setup() end }
+	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 end)
-
 
