@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- bootstrap packer - requires git
 local bootstrap_packer = function()
     local fn = vim.fn
@@ -18,9 +21,9 @@ local bootstrap_packer = function()
     return false
 end
 
-packer_bootstrapped = bootstrap_packer()
+local packer_bootstrapped = bootstrap_packer()
 
-packer_ok, packer = pcall(require, 'packer')
+local packer_ok, packer = pcall(require, 'packer')
 if packer_ok then
 	require('plugins')
 
@@ -32,4 +35,25 @@ if packer_ok then
 		packer.sync()
 	end
 end
+
+vim.api.nvim_create_autocmd(
+	'FileType',
+	{
+		pattern = {'help'},
+		command = [[nnoremap <buffer><silent> q :close<CR>]]
+	}
+)
+
+vim.api.nvim_create_autocmd(
+	'BufWritePost',
+	{
+		pattern = {'plugins.lua'},
+		callback = function()
+			vim.cmd[[luafile lua/plugins.lua]]
+			packer.compile()
+			vim.notify('Reloaded Config')
+		end
+	}
+)
+
 

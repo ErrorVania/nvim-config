@@ -1,3 +1,10 @@
+local M = {}
+
+local packer_ok, packer = pcall(require, 'packer')
+if not packer_ok then
+	return M
+end
+
 packer.init {
 	git = {
 		clone_timeout = 300
@@ -135,3 +142,4 @@ packer.startup(function(use)
 	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 end)
 
+return M
