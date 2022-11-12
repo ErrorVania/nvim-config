@@ -26,15 +26,7 @@ packer.startup(function(use)
     -- The very important stuff
     use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
     use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons' }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('lualine').setup {
-                options = {disabled_filetypes = {'alpha'}, globalstatus = true}
-            }
-        end
-    }
+    use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
     use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
@@ -42,27 +34,10 @@ packer.startup(function(use)
         	'nvim-lua/plenary.nvim',
         	'nvim-telescope/telescope-file-browser.nvim',
 			'ahmedkhalf/project.nvim'
-		},
-        config = function()
-			local telescope = require('telescope')
-			require('project_nvim').setup {
-               	patterns = {'.git', 'Makefile', 'CMakeLists.txt'},
-               	show_hidden = false
-            }
-			telescope.load_extension('projects')
-			telescope.load_extension('file_browser')
-        end
+		}
     }
-    use {
-        'lewis6991/gitsigns.nvim',
-        config = function() require('gitsigns').setup() end
-    }
-    use {
-        'goolord/alpha-nvim',
-        config = function()
-            require'alpha'.setup(require'alpha.themes.dashboard'.config)
-        end
-    }
+    use 'lewis6991/gitsigns.nvim'
+    use 'goolord/alpha-nvim'
     use 'folke/which-key.nvim'
     -- Non-LSP Stuff
     use {
@@ -80,39 +55,17 @@ packer.startup(function(use)
         'numToStr/Comment.nvim',
         config = function() require('Comment').setup() end
     }
-    use {
-        'akinsho/toggleterm.nvim',
-        tag = '*',
-        config = function()
-            require('toggleterm').setup {direction = 'float'}
-        end
-    }
+    use { 'akinsho/toggleterm.nvim', tag = '*' }
 
     -- Everything else
-    use {
-        'williamboman/mason.nvim',
-        config = function() require('mason').setup() end
-    }
+    use 'williamboman/mason.nvim'
     use 'neovim/nvim-lspconfig'
-    use {
-        'williamboman/mason-lspconfig.nvim',
-        config = function() require('mason-lspconfig').setup() end
-    }
+    use 'williamboman/mason-lspconfig.nvim'
+
 
     use 'jackguo380/vim-lsp-cxx-highlight'
-    use {
-        'folke/trouble.nvim',
-        config = function() require('trouble').setup() end
-    }
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('indent_blankline').setup {
-                show_end_of_line = true,
-                space_char_blankline = ' '
-            }
-        end
-    }
+    use 'folke/trouble.nvim'
+    use 'lukas-reineke/indent-blankline.nvim'
 
     -- i have no idea what im doing from this point on
     use {
@@ -128,23 +81,16 @@ packer.startup(function(use)
         },
     }
 
-    use {
-        'ray-x/lsp_signature.nvim',
-        config = [[require('lsp_signature').setup{}]]
-    }
+    use 'ray-x/lsp_signature.nvim'
     use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
     use 'mbbill/undotree'
-    use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', config = [[require('todo-comments').setup{}]]}
-    use {'akinsho/git-conflict.nvim', tag = '*', config = [[require('git-conflict').setup()]]}
+    use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' }
+    use {'akinsho/git-conflict.nvim', tag = '*'}
     use 'stevearc/dressing.nvim'
     use 'christoomey/vim-tmux-navigator'
-	use {"tiagovla/scope.nvim", config = function() require('scope').setup() end }
+	use 'tiagovla/scope.nvim'
 	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
-	use {'RRethy/vim-illuminate', config = function()
-		require('illuminate').configure{
-			providers = {'lsp', 'treesitter'}
-		}
-	end }
+	use 'RRethy/vim-illuminate'
 end)
 
 return M
