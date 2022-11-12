@@ -39,8 +39,16 @@ end
 vim.api.nvim_create_autocmd(
 	'FileType',
 	{
-		pattern = {'help'},
+		pattern = {'help', 'checkhealth'},
 		command = [[nnoremap <buffer><silent> q :close<CR>]]
+	}
+)
+
+vim.api.nvim_create_autocmd(
+	'FileType',
+	{
+		pattern = {'alpha'},
+		command = [[nnoremap <buffer><silent> q :quit<CR>]]
 	}
 )
 
