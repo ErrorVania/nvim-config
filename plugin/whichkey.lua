@@ -57,7 +57,14 @@ whichkey.register(
 		},
 		N = {
 			name = 'Neovim',
-			c = {'<cmd>lua _edit_config_files()<CR>', 'Edit all config files'}
+			c = {'<cmd>lua _edit_config_files()<CR>', 'Edit all config files'},
+			p = {
+				name = 'Packer',
+				c = {'<cmd>PackerCompile<cr>', 'Compile'},
+				s = {'<cmd>PackerSync<cr>', 'Sync'},
+				i = {'<cmd>PackerInstall<cr>', 'Install'},
+				u = {'<cmd>PackerUpdate<cr>', 'Update'},
+			}
 		}
 	},
 	{ prefix = "<leader>" }

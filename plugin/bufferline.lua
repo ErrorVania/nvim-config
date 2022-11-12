@@ -16,6 +16,11 @@ bufferline.setup {
 				filetype = 'undotree',
 				text = "UndoTree",
 				text_align = 'center'
+			},
+			{
+				filetype = 'toggleterm',
+				text = 'Terminal',
+				text_align = 'center'
 			}
         },
         diagnostics = 'nvim_lsp'

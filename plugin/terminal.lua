@@ -4,5 +4,8 @@ if not ok then
 end
 
 term.setup{
-	direction = 'float'
+	direction = 'float',
+	float_opts = {
+		border = 'curved'
+	}
 }
