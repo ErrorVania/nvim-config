@@ -92,6 +92,7 @@ packer.startup(function(use)
 	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 	use 'RRethy/vim-illuminate'
 	use 'stevearc/overseer.nvim'
+	use 'MTDL9/vim-log-highlighting'
 end)
 
 return M

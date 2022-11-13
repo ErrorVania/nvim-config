@@ -17,7 +17,7 @@ vim.cmd("set noet ci pi sts=0 sw=4 ts=4")
 
 local packer_ok, _ = pcall(require, 'packer')
 if packer_ok then
-	vim.cmd('colorscheme catppuccin-macchiato')
+	vim.cmd('colorscheme catppuccin-mocha')
 	vim.opt.foldmethod="expr"
 	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 	vim.opt.foldlevel = 20
