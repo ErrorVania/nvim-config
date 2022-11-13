@@ -64,7 +64,8 @@ whichkey.register(
 				s = {'<cmd>PackerSync<cr>', 'Sync'},
 				i = {'<cmd>PackerInstall<cr>', 'Install'},
 				u = {'<cmd>PackerUpdate<cr>', 'Update'},
-			}
+			},
+			m = {'<cmd>Mason<cr>', 'Mason'}
 		}
 	},
 	{ prefix = "<leader>" }
