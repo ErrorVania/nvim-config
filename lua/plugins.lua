@@ -91,6 +91,7 @@ packer.startup(function(use)
 	use 'tiagovla/scope.nvim'
 	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 	use 'RRethy/vim-illuminate'
+	use 'stevearc/overseer.nvim'
 end)
 
 return M
