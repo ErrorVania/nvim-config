@@ -8,7 +8,7 @@ bufferline.setup {
 		offsets = {
         	{
 				filetype = 'NvimTree',
-				text = "Explorer",
+				text = "Files",
 				highlight = 'Directory',
 				text_align = 'center'
             },

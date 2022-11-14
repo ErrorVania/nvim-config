@@ -93,6 +93,8 @@ packer.startup(function(use)
 	use 'RRethy/vim-illuminate'
 	use 'stevearc/overseer.nvim'
 	use 'MTDL9/vim-log-highlighting'
+	use 'windwp/nvim-ts-autotag'
+	use 'nvim-telescope/telescope-ui-select.nvim'
 end)
 
 return M
