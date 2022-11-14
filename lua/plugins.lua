@@ -95,6 +95,7 @@ packer.startup(function(use)
 	use 'MTDL9/vim-log-highlighting'
 	use 'windwp/nvim-ts-autotag'
 	use 'nvim-telescope/telescope-ui-select.nvim'
+	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
 end)
 
 return M

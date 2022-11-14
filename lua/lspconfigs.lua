@@ -29,11 +29,18 @@ local handlers = {
 		['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
 }
 
+local navicok, navic = pcall(require, 'nvim-navic')
+
 require('mason-lspconfig').setup_handlers{
 	function (server_name)
 		require('lspconfig')[server_name].setup{
 			capabilities = caps,
-			handlers = handlers
+			handlers = handlers,
+			on_attach = function (client, bufnr)
+				if navicok then
+					navic.attach(client, bufnr)
+				end
+			end
 		}
 	end
 }
