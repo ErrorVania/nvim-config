@@ -7,7 +7,7 @@ end
 
 mason.setup{
 	ui = {
-		border = 'single'
+		border = 'none'
 	}
 }
 masonlsp.setup()
