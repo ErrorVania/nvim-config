@@ -22,30 +22,7 @@ local bootstrap_packer = function()
 end
 
 
-local function check_git_repo()
-	local cmd = "git rev-parse --is-inside-work-tree"
-	if vim.fn.system(cmd) == "true\n" then
-		vim.api.nvim_exec_autocmds("User", { pattern = "InGitRepo" })
-		return true -- removes autocmd after lazy loading git related plugins
-	end
-end
 
-local function is_tmux_sess()
-	if os.getenv('TMUX') then
-		vim.api.nvim_exec_autocmds("User", { pattern = "IsTmuxSession" })
-		return true
-	end
-end
-
-vim.api.nvim_create_autocmd(
-	{ "VimEnter", "DirChanged" },
-	{ callback = function() vim.schedule(check_git_repo) end }
-)
-
-vim.api.nvim_create_autocmd(
-	{ "VimEnter"},
-	{ callback = function() vim.schedule(is_tmux_sess) end }
-)
 
 local packer_bootstrapped = bootstrap_packer()
 
@@ -88,4 +65,29 @@ vim.api.nvim_create_autocmd(
 			vim.notify('Reloaded Config')
 		end
 	}
+)
+
+local function check_git_repo()
+	local cmd = "git rev-parse --is-inside-work-tree"
+	if vim.fn.system(cmd) == "true\n" then
+		vim.api.nvim_exec_autocmds("User", { pattern = "InGitRepo" })
+		return true -- removes autocmd after lazy loading git related plugins
+	end
+end
+
+local function is_tmux_sess()
+	if os.getenv('TMUX') then
+		vim.api.nvim_exec_autocmds("User", { pattern = "IsTmuxSession" })
+		return true
+	end
+end
+
+vim.api.nvim_create_autocmd(
+	{ "VimEnter", "DirChanged" },
+	{ callback = function() vim.schedule(check_git_repo) end }
+)
+
+vim.api.nvim_create_autocmd(
+	{ "VimEnter"},
+	{ callback = function() vim.schedule(is_tmux_sess) end }
 )
