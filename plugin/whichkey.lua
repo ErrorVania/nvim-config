@@ -55,6 +55,7 @@ whichkey.register(
 			name = "Git",
 			g = { '<cmd>lua _lazygit_toggle()<CR>', 'LazyGit' },
 		},
+		u = {'<cmd>UndotreeToggle<cr>', "UndoTree"},
 		N = {
 			name = 'Neovim',
 			c = {'<cmd>lua _edit_config_files()<CR>', 'Edit all config files'},
