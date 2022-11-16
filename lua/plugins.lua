@@ -34,7 +34,7 @@ packer.startup(function(use)
 			'ahmedkhalf/project.nvim'
 		}
 	}
-	use 'lewis6991/gitsigns.nvim'
+	use {'lewis6991/gitsigns.nvim', event = 'User InGitRepo'}
 	use 'goolord/alpha-nvim'
 	use 'folke/which-key.nvim'
 	use {
@@ -80,7 +80,7 @@ packer.startup(function(use)
 	use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
 	use 'mbbill/undotree'
 	use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufEnter'}
-	use {'akinsho/git-conflict.nvim', tag = '*'}
+	use {'akinsho/git-conflict.nvim', tag = '*', event = 'User InGitRepo'}
 	use 'stevearc/dressing.nvim'
 	use 'christoomey/vim-tmux-navigator'
 	use 'tiagovla/scope.nvim'
