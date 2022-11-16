@@ -18,9 +18,6 @@ packer.init {
 
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
-	-- use 'Mofiqul/dracula.nvim'
-	-- use 'joshdick/onedark.vim'
-	-- use 'folke/tokyonight.nvim'
 	use 'catppuccin/nvim'
 	use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons' }
