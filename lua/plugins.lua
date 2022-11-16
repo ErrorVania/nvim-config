@@ -82,7 +82,7 @@ packer.startup(function(use)
 	use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufEnter'}
 	use {'akinsho/git-conflict.nvim', tag = '*', event = 'User InGitRepo'}
 	use 'stevearc/dressing.nvim'
-	use 'christoomey/vim-tmux-navigator'
+	use {'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession'}
 	use 'tiagovla/scope.nvim'
 	use {'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 	use {'RRethy/vim-illuminate', event = 'BufEnter'}

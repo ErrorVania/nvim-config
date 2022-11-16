@@ -30,9 +30,21 @@ local function check_git_repo()
 	end
 end
 
+local function is_tmux_sess()
+	if os.getenv('TMUX') then
+		vim.api.nvim_exec_autocmds("User", { pattern = "IsTmuxSession" })
+		return true
+	end
+end
+
 vim.api.nvim_create_autocmd(
 	{ "VimEnter", "DirChanged" },
 	{ callback = function() vim.schedule(check_git_repo) end }
+)
+
+vim.api.nvim_create_autocmd(
+	{ "VimEnter"},
+	{ callback = function() vim.schedule(is_tmux_sess) end }
 )
 
 local packer_bootstrapped = bootstrap_packer()
