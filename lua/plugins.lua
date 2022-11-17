@@ -55,18 +55,7 @@ packer.startup(function(use)
 	use {'folke/trouble.nvim', event = 'LspAttach'}
 	use {'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter'}
 
-	use {
-		'hrsh7th/nvim-cmp',
-		requires = {
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
-			{'hrsh7th/cmp-path', after = 'nvim-cmp'},
-			{'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
-			{'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
-			{'L3MON4D3/LuaSnip', after = 'nvim-cmp'},
-			{'windwp/nvim-autopairs', config = [[require('nvim-autopairs').setup{}]]}
-		}
-	}
+	require('configs.completion').setup(use)
 
 	use {'ray-x/lsp_signature.nvim', event = 'LspAttach'}
 	use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
