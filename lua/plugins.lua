@@ -26,6 +26,7 @@ packer.startup(function(use)
 	require('configs.telescope').setup(use)
 	require('configs.git').setup(use)
 
+	use 'famiu/bufdelete.nvim'
 	use 'goolord/alpha-nvim'
 	use 'folke/which-key.nvim'
 	use {

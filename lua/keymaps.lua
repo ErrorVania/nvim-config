@@ -14,7 +14,7 @@ nmap('n', '<C-t>', '<cmd>ToggleTerm<cr>')
 nmap('n', '<C-s>', '<cmd>w<cr>')
 nmap('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>')
 nmap('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>')
-nmap('n', '<leader>c', '<cmd>bd<cr>')
+nmap('n', '<leader>c', '<cmd>Bdelete<cr>')
 
 nmap('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<cr>')
 nmap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>')
