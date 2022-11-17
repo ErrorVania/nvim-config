@@ -9,7 +9,7 @@ whichkey.setup{
 	}
 }
 
-function _lazygit_toggle()
+local function _lazygit_toggle()
 	local tterm_ok, term = pcall(require, 'toggleterm.terminal')
 	if tterm_ok then
     	local Terminal = term.Terminal
@@ -22,7 +22,7 @@ function _lazygit_toggle()
 	end
 end
 
-function _edit_config_files()
+local function _edit_config_files()
 	local tele_ok, builtin = pcall(require, 'telescope.builtin')
 	if tele_ok then
  		builtin.find_files{
@@ -53,12 +53,12 @@ whichkey.register(
 		},
 		g = {
 			name = "Git",
-			g = { '<cmd>lua _lazygit_toggle()<CR>', 'LazyGit' },
+			g = { _lazygit_toggle, 'LazyGit' },
 		},
 		u = {'<cmd>UndotreeToggle<cr>', "UndoTree"},
 		N = {
 			name = 'Neovim',
-			c = {'<cmd>lua _edit_config_files()<CR>', 'Edit all config files'},
+			c = { _edit_config_files, 'Edit all config files'},
 			p = {
 				name = 'Packer',
 				c = {'<cmd>PackerCompile<cr>', 'Compile'},
