@@ -21,8 +21,8 @@ packer.startup(function(use)
 	use 'catppuccin/nvim'
 	use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons' }
-	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 
+	require('configs.statusline').setup(use)
 	require('configs.telescope').setup(use)
 	require('configs.git').setup(use)
 
