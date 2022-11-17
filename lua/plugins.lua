@@ -31,7 +31,10 @@ packer.startup(function(use)
 	use 'folke/which-key.nvim'
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		requires = {'p00f/nvim-ts-rainbow', after= 'nvim-treesitter'},
+		requires = {
+			{'p00f/nvim-ts-rainbow', after = 'nvim-treesitter'},
+			{'windwp/nvim-ts-autotag', after = 'nvim-treesitter'}
+		},
 		run = function()
 			require('nvim-treesitter.install').update({with_sync = true})
 		end
@@ -65,7 +68,6 @@ packer.startup(function(use)
 	use {'RRethy/vim-illuminate', event = 'BufEnter'}
 	use 'stevearc/overseer.nvim'
 	use 'MTDL9/vim-log-highlighting'
-	use {'windwp/nvim-ts-autotag', after = 'nvim-treesitter'}
 	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
 end)
 
