@@ -78,7 +78,7 @@ packer.startup(function(use)
 	use {'RRethy/vim-illuminate', event = 'BufEnter'}
 	use 'stevearc/overseer.nvim'
 	use 'MTDL9/vim-log-highlighting'
-	use 'windwp/nvim-ts-autotag'
+	use {'windwp/nvim-ts-autotag', after = 'nvim-treesitter'}
 	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
 end)
 
