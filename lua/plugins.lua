@@ -36,10 +36,7 @@ packer.startup(function(use)
 			require('nvim-treesitter.install').update({with_sync = true})
 		end
 	}
-	use {
-		'nvim-tree/nvim-tree.lua',
-		requires = 'nvim-tree/nvim-web-devicons'
-	}
+	use { 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' }
 	use {
 		'numToStr/Comment.nvim',
 		config = function() require('Comment').setup() end
@@ -60,7 +57,7 @@ packer.startup(function(use)
 	use {'ray-x/lsp_signature.nvim', event = 'LspAttach'}
 	use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
 	use 'mbbill/undotree'
-	use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufEnter'}
+	use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufEnter', config = [[require('todo-comments').setup()]]}
 	use 'stevearc/dressing.nvim'
 	use {'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession'}
 	use 'tiagovla/scope.nvim'
