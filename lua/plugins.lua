@@ -51,7 +51,6 @@ packer.startup(function(use)
 	use 'williamboman/mason-lspconfig.nvim'
 
 
-	use { 'jackguo380/vim-lsp-cxx-highlight', event = { 'FileType cpp', 'FileType c' } }
 	use { 'folke/trouble.nvim', event = 'LspAttach' }
 	use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter' }
 
@@ -69,7 +68,7 @@ packer.startup(function(use)
 	use { 'RRethy/vim-illuminate', event = 'BufEnter' }
 	use 'stevearc/overseer.nvim'
 	use 'MTDL9/vim-log-highlighting'
-	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
+	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", event = 'LspAttach' }
 end)
 
 return M
