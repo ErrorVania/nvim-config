@@ -22,15 +22,7 @@ packer.startup(function(use)
 	use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons' }
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-	-- use {
-	-- 	'nvim-telescope/telescope.nvim',
-	-- 	tag = '0.1.0',
-	-- 	requires = {
-	-- 		'nvim-lua/plenary.nvim',
-	-- 		'nvim-telescope/telescope-file-browser.nvim',
-	-- 		'ahmedkhalf/project.nvim'
-	-- 	}
-	-- }
+
 	require('configs.telescope').setup(use)
 	require('configs.git').setup(use)
 
