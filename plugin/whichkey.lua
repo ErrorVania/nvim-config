@@ -46,10 +46,10 @@ whichkey.register(
 		},
 		l = {
 			name = "LSP",
-			d = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to Declaration' },
-			D = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to Definition' },
-			r = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Go to References' },
-			R = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename' }
+			d = { vim.lsp.buf.declaration, 'Go to Declaration' },
+			D = { vim.lsp.buf.definition, 'Go to Definition' },
+			r = { vim.lsp.buf.references, 'Go to References' },
+			R = { vim.lsp.buf.rename, 'Rename' }
 		},
 		g = {
 			name = "Git",
