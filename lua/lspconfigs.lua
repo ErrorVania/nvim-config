@@ -26,21 +26,31 @@ conf.clangd.setup{
 
 local caps = require('cmp_nvim_lsp').default_capabilities()
 local handlers = {
-		['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
+	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
 }
 
 local navicok, navic = pcall(require, 'nvim-navic')
-
-require('mason-lspconfig').setup_handlers{
-	function (server_name)
-		require('lspconfig')[server_name].setup{
+require('mason-lspconfig').setup_handlers {
+	function(server_name)
+		require('lspconfig')[server_name].setup {
 			capabilities = caps,
 			handlers = handlers,
-			on_attach = function (client, bufnr)
+			on_attach = function(client, bufnr)
 				if navicok then
 					navic.attach(client, bufnr)
 				end
 			end
 		}
-	end
+	end,
+	["sumneko_lua"] = function()
+		require('lspconfig').sumneko_lua.setup {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" }
+					}
+				}
+			}
+		}
+	end,
 }
