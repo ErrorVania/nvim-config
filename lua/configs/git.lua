@@ -20,7 +20,7 @@ function M.setup(use)
 		'lewis6991/gitsigns.nvim',
 		config = M.signs_config,
 		event = 'User InGitRepo',
-		after = 'nvim-notify' 
+		after = 'nvim-notify'
 	}
 
 	use {
