@@ -22,16 +22,18 @@ packer.startup(function(use)
 	use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons' }
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-	use {
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.0',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-file-browser.nvim',
-			'ahmedkhalf/project.nvim'
-		}
-	}
-	use {'lewis6991/gitsigns.nvim', event = 'User InGitRepo'}
+	-- use {
+	-- 	'nvim-telescope/telescope.nvim',
+	-- 	tag = '0.1.0',
+	-- 	requires = {
+	-- 		'nvim-lua/plenary.nvim',
+	-- 		'nvim-telescope/telescope-file-browser.nvim',
+	-- 		'ahmedkhalf/project.nvim'
+	-- 	}
+	-- }
+	require('configs.telescope').setup(use)
+	require('configs.git').setup(use)
+
 	use 'goolord/alpha-nvim'
 	use 'folke/which-key.nvim'
 	use {
@@ -77,7 +79,6 @@ packer.startup(function(use)
 	use {'RishabhRD/nvim-cheat.sh', requires = 'RishabhRD/popfix'}
 	use 'mbbill/undotree'
 	use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufEnter'}
-	use {'akinsho/git-conflict.nvim', tag = '*', event = 'User InGitRepo'}
 	use 'stevearc/dressing.nvim'
 	use {'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession'}
 	use 'tiagovla/scope.nvim'
@@ -86,7 +87,6 @@ packer.startup(function(use)
 	use 'stevearc/overseer.nvim'
 	use 'MTDL9/vim-log-highlighting'
 	use 'windwp/nvim-ts-autotag'
-	use 'nvim-telescope/telescope-ui-select.nvim'
 	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
 end)
 
