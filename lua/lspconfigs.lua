@@ -44,6 +44,8 @@ require('mason-lspconfig').setup_handlers {
 	end,
 	["sumneko_lua"] = function()
 		require('lspconfig').sumneko_lua.setup {
+			capabilities = caps,
+			handlers = handlers,
 			settings = {
 				Lua = {
 					diagnostics = {
