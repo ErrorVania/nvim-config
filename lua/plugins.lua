@@ -29,16 +29,9 @@ packer.startup(function(use)
 	use 'famiu/bufdelete.nvim'
 	use 'goolord/alpha-nvim'
 	use 'folke/which-key.nvim'
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		requires = {
-			{ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' },
-			{ 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
-		},
-		run = function()
-			require('nvim-treesitter.install').update({ with_sync = true })
-		end
-	}
+
+	require('configs.treesitter').setup(use)
+
 	use { 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' }
 	use {
 		'numToStr/Comment.nvim',
