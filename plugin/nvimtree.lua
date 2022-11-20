@@ -30,6 +30,17 @@ nvimtree.setup{
 		indent_width = 4,
 		indent_markers = {
 			enable = true,
+		},
+		icons = {
+			git_placement = 'signcolumn',
+			padding = ' ',
+			glyphs = {
+				git = {
+					unstaged = '',
+					staged = '',
+					untracked = ''
+				}
+			}
 		}
 	},
 	update_focused_file = {
@@ -40,3 +51,15 @@ nvimtree.setup{
 		ignore = false
 	}
 }
+
+local colorok, colors = pcall(require, 'catppuccin.palettes')
+if colorok then
+	colors = colors.get_palette()
+	local hs = {
+		NvimTreeGitDirty = { fg = colors.sky }
+	}
+
+	for hl, col in pairs(hs) do
+		vim.api.nvim_set_hl(0, hl, col)
+	end
+end
