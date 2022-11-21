@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd(
 	{
 		pattern = { 'plugins.lua' },
 		callback = function()
-			vim.cmd [[luafile lua/plugins.lua]]
+			vim.cmd [[luafile %]]
 			packer.compile()
 			vim.notify('Reloaded Config')
 		end
@@ -100,7 +100,10 @@ local function is_editing()
 end
 
 vim.api.nvim_create_autocmd(
-	{ "VimEnter", "FileType *" },
-	{ callback = function() vim.schedule(is_editing) end }
+	{ "VimEnter", "FileType" },
+	{
+		callback = function() vim.schedule(is_editing) end,
+		pattern = "*"
+	}
 )
 
