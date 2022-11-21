@@ -91,3 +91,16 @@ vim.api.nvim_create_autocmd(
 	{ "VimEnter"},
 	{ callback = function() vim.schedule(is_tmux_sess) end }
 )
+
+local function is_editing()
+	if vim.fn.argc() > 0 or vim.o.insertmode or vim.o.modifiable then
+		vim.api.nvim_exec_autocmds("User", { pattern = "IsEditing" })
+		return true
+	end
+end
+
+vim.api.nvim_create_autocmd(
+	{ "VimEnter", "FileType *" },
+	{ callback = function() vim.schedule(is_editing) end }
+)
+
