@@ -31,8 +31,8 @@ packer.startup(function(use)
 	use 'folke/which-key.nvim'
 
 	require('configs.treesitter').setup(use)
+	require('configs.nvimtree').setup(use)
 
-	use { 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' }
 	use {
 		'numToStr/Comment.nvim',
 		config = function() require('Comment').setup() end
