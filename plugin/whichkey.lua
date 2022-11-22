@@ -40,7 +40,7 @@ whichkey.register(
 			f = { "<cmd>Telescope find_files<cr>", "Find File" },
 			g = { "<cmd>Telescope git_files<cr>", "Git Files" },
 			h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-			p = { "<cmd>Telescope projects<cr>", "Projects"},
+			p = { "<cmd>Telescope project<cr>", "Projects"},
 			b = { "<cmd>Telescope file_browser<cr>", "File Browser"},
 			c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes"}
 		},

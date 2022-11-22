@@ -11,34 +11,50 @@ function M.telescope_setup()
 			['ui-select'] = {
 				require('telescope.themes').get_dropdown{}
 			}
+		},
+		pickers = {
+			find_files = {
+				theme = 'dropdown'
+			}
 		}
 	}
 end
 
-function M.projects_setup()
+-- function M.projects_setup()
+-- 	local telescope_ok, telescope = pcall(require, 'telescope')
+-- 	local projects_ok, projects = pcall(require, 'project_nvim')
+--
+-- 	if not projects_ok or not telescope_ok then
+-- 		return
+-- 	end
+--
+-- 	projects.setup{
+-- 		patterns = {'.git', 'Makefile', 'CMakeLists.txt'},
+--     	show_hidden = false
+-- 	}
+--
+-- 	telescope.load_extension('projects')
+-- end
+
+function M.project_setup()
 	local telescope_ok, telescope = pcall(require, 'telescope')
-	local projects_ok, projects = pcall(require, 'project_nvim')
-
-	if not projects_ok or not telescope_ok then
-		return
+	if telescope_ok then
+		telescope.load_extension('project')
 	end
-
-	projects.setup{
-		patterns = {'.git', 'Makefile', 'CMakeLists.txt'},
-    	show_hidden = false
-	}
-
-	telescope.load_extension('projects')
 end
 
 function M.file_browser_setup()
 	local telescope_ok, telescope = pcall(require, 'telescope')
-	telescope.load_extension('file_browser')
+	if telescope_ok then
+		telescope.load_extension('file_browser')
+	end
 end
 
 function M.uiselect_setup()
 	local telescope_ok, telescope = pcall(require, 'telescope')
-	telescope.load_extension('ui-select')
+	if telescope_ok then
+		telescope.load_extension('ui-select')
+	end
 end
 
 function M.setup(use)
@@ -58,11 +74,18 @@ function M.setup(use)
 		config = M.file_browser_setup
 	}
 
+	-- use {
+	-- 	'ahmedkhalf/project.nvim',
+	-- 	requires = 'nvim-telescope/telescope.nvim',
+	-- 	after = 'telescope.nvim',
+	-- 	config = M.projects_setup
+	-- }
+	--
 	use {
-		'ahmedkhalf/project.nvim',
-		requires = 'nvim-telescope/telescope.nvim',
+		'nvim-telescope/telescope-project.nvim',
+		requires = 'nvim-telescopt/telescope.nvim',
 		after = 'telescope.nvim',
-		config = M.projects_setup
+		config = M.project_setup
 	}
 
 	use {
