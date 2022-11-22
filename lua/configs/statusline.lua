@@ -36,7 +36,6 @@ function M.lualine_setup()
 					}
 				}
 			},
-			-- TODO fix!
 			lualine_x = { "require'configs.statusline'.getlsps()",'diagnostics', 'filetype' },
 			lualine_y = { 'progress' },
 			lualine_z = { 'location' }
