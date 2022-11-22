@@ -102,7 +102,20 @@ end
 vim.api.nvim_create_autocmd(
 	{ "VimEnter", "FileType" },
 	{
-		callback = function() vim.schedule(is_editing) end,
+		callback = function()
+			local blacklist = {
+				"Alpha",
+				"NvimTree",
+				"mason",
+				"packer"
+			}
+			for index, value in ipairs(blacklist) do
+				if vim.bo.filetype == value then
+					return
+				end
+			end
+			vim.schedule(is_editing)
+		end,
 		pattern = '*'
 	}
 )
