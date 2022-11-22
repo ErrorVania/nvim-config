@@ -103,7 +103,7 @@ vim.api.nvim_create_autocmd(
 	{ "VimEnter", "FileType" },
 	{
 		callback = function() vim.schedule(is_editing) end,
-		pattern = "*"
+		pattern = '*'
 	}
 )
 
