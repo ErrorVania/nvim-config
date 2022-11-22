@@ -91,14 +91,14 @@ function M.setup(use)
 		'hrsh7th/nvim-cmp',
 		requires = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-buffer', event = 'User IsEditing' },
-			{ 'hrsh7th/cmp-path', event = 'User IsEditing' },
-			{ 'hrsh7th/cmp-cmdline', event = 'User IsEditing' },
-			{ 'saadparwaiz1/cmp_luasnip', event = 'User IsEditing' },
-			{ 'L3MON4D3/LuaSnip', event = 'User IsEditing' },
+			{ 'hrsh7th/cmp-buffer'},
+			{ 'hrsh7th/cmp-path' },
+			{ 'hrsh7th/cmp-cmdline' },
+			{ 'saadparwaiz1/cmp_luasnip' },
+			{ 'L3MON4D3/LuaSnip' },
 		},
 		config = M.configure_cmp,
-		event = 'User IsEditing'
+		--event = 'User IsEditing'
 	}
 
 	use {
