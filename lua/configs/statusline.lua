@@ -36,7 +36,7 @@ function M.lualine_setup()
 					}
 				}
 			},
-			lualine_x = { "require'configs.statusline'.getlsps()",'diagnostics', 'filetype' },
+			lualine_x = { 'diagnostics', "require'configs.statusline'.getlsps()", 'filetype' },
 			lualine_y = { 'progress' },
 			lualine_z = { 'location' }
 		},
