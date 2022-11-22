@@ -39,7 +39,8 @@ packer.startup(function(use)
 
 	use {
 		'numToStr/Comment.nvim',
-		config = function() require('Comment').setup() end
+		config = function() require('Comment').setup() end,
+		event = 'User IsEditing'
 	}
 	use { 'akinsho/toggleterm.nvim', tag = '*' }
 
