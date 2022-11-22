@@ -2,10 +2,11 @@ local M = {}
 
 function M.getlsps()
 	local names = {}
-	for _, lsp in vim.lsp.get_active_clients({bufnr = vim.api.nvim_get_current_buf()}) do
-		names[#names+1] = lsp.name
+	local clients = vim.lsp.get_active_clients{bufnr = vim.api.nvim_get_current_buf()}
+
+	for i, lsp in ipairs(clients) do
+		table.insert(names, lsp.name)
 	end
-	print(names[1])
 	return table.concat(names, ", ")
 end
 
@@ -36,7 +37,7 @@ function M.lualine_setup()
 				}
 			},
 			-- TODO fix!
-			lualine_x = { "vim.inspect(require'configs.statusline'.getlsps())",'diagnostics', 'filetype' },
+			lualine_x = { "require'configs.statusline'.getlsps()",'diagnostics', 'filetype' },
 			lualine_y = { 'progress' },
 			lualine_z = { 'location' }
 		},
