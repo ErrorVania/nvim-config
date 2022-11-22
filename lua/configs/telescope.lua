@@ -10,10 +10,17 @@ function M.telescope_setup()
 		extensions = {
 			['ui-select'] = {
 				require('telescope.themes').get_dropdown{}
+			},
+			project = {
+				sync_with_nvim_tree = true,
+				theme = 'dropdown'
 			}
 		},
 		pickers = {
 			find_files = {
+				theme = 'dropdown'
+			},
+			oldfiles = {
 				theme = 'dropdown'
 			}
 		}
