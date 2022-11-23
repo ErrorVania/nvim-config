@@ -38,7 +38,7 @@ function M.lualine_setup()
 					'diff',
 					symbols = {
 						added = ' ',
-						modified = 'ﰣ ',
+						modified = '柳',
 						removed = 'ﯰ '
 					}
 				}
