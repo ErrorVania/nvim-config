@@ -16,11 +16,11 @@ local colorok, colors = pcall(require, 'catppuccin.palettes')
 if colorok then
 	colors = colors.get_palette()
 
-	local TelescopeColor = {
+	local MasonColor = {
 		MasonHeader = {bg = colors.green, fg = colors.mantle }
 	}
 
-	for hl, col in pairs(TelescopeColor) do
+	for hl, col in pairs(MasonColor) do
 		vim.api.nvim_set_hl(0, hl, col)
 	end
 end
