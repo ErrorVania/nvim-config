@@ -44,10 +44,7 @@ packer.startup(function(use)
 	}
 	use { 'akinsho/toggleterm.nvim', tag = '*' }
 
-	use 'williamboman/mason.nvim'
-	use 'neovim/nvim-lspconfig'
-	use 'williamboman/mason-lspconfig.nvim'
-
+	require('configs.lsp').setup(use)
 
 	use { 'folke/trouble.nvim', event = 'LspAttach' }
 	use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter' }
