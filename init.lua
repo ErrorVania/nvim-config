@@ -104,8 +104,6 @@ vim.api.nvim_create_autocmd(
 	{
 		callback = function()
 			local blacklist = {
-				"Alpha",
-				"NvimTree",
 				"mason",
 				"packer"
 			}
