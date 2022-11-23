@@ -7,6 +7,11 @@ function M.getlsps()
 	for i, lsp in ipairs(clients) do
 		table.insert(names, lsp.name)
 	end
+
+	if #names == 0 then
+		return "No LSP"
+	end
+
 	return table.concat(names, ", ")
 end
 
