@@ -21,7 +21,8 @@ function M.lualine_setup()
 			disabled_filetypes = {
 				'alpha'
 			},
-			globalstatus = true
+			globalstatus = true,
+			section_separators = { left = '', right = '' },
 		},
 		sections = {
 			lualine_a = { 'mode' },
