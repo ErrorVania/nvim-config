@@ -12,7 +12,7 @@ function M.getlsps()
 		return "No LSP"
 	end
 
-	return table.concat(names, ", ")
+	return '[' .. table.concat(names, ", ") .. ']'
 end
 
 function M.mode()
