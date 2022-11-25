@@ -7,9 +7,6 @@ function M.telescope_setup()
 		return
 	end
 
-	local min_theme = require('telescope.themes').get_dropdown{
-		previewer = false
-	}
 
 	telescope.setup{
 		defaults = {
@@ -25,9 +22,17 @@ function M.telescope_setup()
 			}
 		},
 		pickers = {
-			find_files = min_theme,
-			oldfiles = min_theme,
-			colorscheme = min_theme
+			find_files = require('telescope.themes').get_dropdown{
+				previewer = false
+			},
+			oldfiles = require('telescope.themes').get_dropdown{
+				previewer = false
+			},
+			colorscheme = require('telescope.themes').get_dropdown{
+				previewer = false,
+				prompt_prefix = ' ',
+				prompt_title = 'Themes'
+			}
 		}
 	}
 end
