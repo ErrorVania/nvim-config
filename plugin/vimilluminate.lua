@@ -11,7 +11,8 @@ illuminate.configure{
 }
 
 local IlluminateColor = {
-	IlluminatedWordRead = {link = 'Visual'}
+	IlluminatedWordRead = {link = 'Visual'},
+	IlluminatedWordWrite = {link = 'Visual'},
 }
 
 for hl, col in pairs(IlluminateColor) do
