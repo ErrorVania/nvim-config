@@ -1,10 +1,15 @@
 local M = {}
 
+
 function M.telescope_setup()
 	local telescope_ok, telescope = pcall(require, 'telescope')
 	if not telescope_ok then
 		return
 	end
+
+	local min_theme = require('telescope.themes').get_dropdown{
+		previewer = false
+	}
 
 	telescope.setup{
 		defaults = {
@@ -20,12 +25,9 @@ function M.telescope_setup()
 			}
 		},
 		pickers = {
-			find_files = {
-				theme = 'dropdown'
-			},
-			oldfiles = {
-				theme = 'dropdown'
-			}
+			find_files = min_theme,
+			oldfiles = min_theme,
+			colorscheme = min_theme
 		}
 	}
 end
