@@ -15,6 +15,10 @@ function M.getlsps()
 	return table.concat(names, ", ")
 end
 
+function M.mode()
+	return ""
+end
+
 function M.lualine_setup()
 	local ok, lualine = pcall(require, 'lualine')
 	if not ok then
@@ -31,7 +35,7 @@ function M.lualine_setup()
 			component_separators = { left = '|', right = '|' }
 		},
 		sections = {
-			lualine_a = { 'mode' },
+			lualine_a = { require'configs.statusline'.mode },
 			lualine_b = { 'branch' },
 			lualine_c = {
 				{
@@ -43,7 +47,7 @@ function M.lualine_setup()
 					}
 				}
 			},
-			lualine_x = { 'diagnostics', "require'configs.statusline'.getlsps()", 'filetype' },
+			lualine_x = { 'diagnostics', require'configs.statusline'.getlsps, 'filetype' },
 			lualine_y = { 'progress' },
 			lualine_z = { 'location' }
 		},
