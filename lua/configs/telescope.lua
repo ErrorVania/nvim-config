@@ -7,6 +7,9 @@ function M.telescope_setup()
 	end
 
 	telescope.setup{
+		defaults = {
+			prompt_prefix = ' '
+		},
 		extensions = {
 			['ui-select'] = {
 				require('telescope.themes').get_dropdown{}
@@ -27,21 +30,6 @@ function M.telescope_setup()
 	}
 end
 
--- function M.projects_setup()
--- 	local telescope_ok, telescope = pcall(require, 'telescope')
--- 	local projects_ok, projects = pcall(require, 'project_nvim')
---
--- 	if not projects_ok or not telescope_ok then
--- 		return
--- 	end
---
--- 	projects.setup{
--- 		patterns = {'.git', 'Makefile', 'CMakeLists.txt'},
---     	show_hidden = false
--- 	}
---
--- 	telescope.load_extension('projects')
--- end
 
 function M.project_setup()
 	local telescope_ok, telescope = pcall(require, 'telescope')
