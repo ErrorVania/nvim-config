@@ -9,6 +9,10 @@ function M.mason_config()
 	mason.setup {
 		ui = {
 			border = 'none'
+		},
+		providers = {
+			'mason.providers.client',
+			'mason.providers.registry-api'
 		}
 	}
 
