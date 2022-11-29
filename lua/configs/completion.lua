@@ -76,7 +76,7 @@ function M.setup_autopairs()
 		return
 	end
 
-	ap.setup{}
+	ap.setup {}
 
 	local ok2, cmp = pcall(require, 'cmp')
 	if not ok2 then
@@ -91,7 +91,7 @@ function M.setup(use)
 		'hrsh7th/nvim-cmp',
 		requires = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-buffer'},
+			{ 'hrsh7th/cmp-buffer' },
 			{ 'hrsh7th/cmp-path' },
 			{ 'hrsh7th/cmp-cmdline' },
 			{ 'saadparwaiz1/cmp_luasnip' },

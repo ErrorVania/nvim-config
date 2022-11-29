@@ -6,7 +6,7 @@ map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
 local nmap = function(mode, keys, command)
-    return map(mode, keys, command, { noremap = true })
+	return map(mode, keys, command, { noremap = true })
 end
 
 nmap('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
@@ -26,4 +26,3 @@ nmap('n', '<C-h>', '<C-W>h')
 nmap('n', '<C-j>', '<C-W>j')
 nmap('n', '<C-k>', '<C-W>k')
 nmap('n', '<C-l>', '<C-W>l')
-

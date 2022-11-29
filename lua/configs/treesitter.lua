@@ -6,30 +6,29 @@ function M.config_ts()
 		return
 	end
 
-	treesitter.setup{
+	treesitter.setup {
 		auto_install = true,
-    	ensure_installed = {'c', 'cpp', 'lua', 'rust', 'help'},
-    	highlight = {
-        	enable = true,
-        	additional_vim_regex_highlighting = false
-    	},
-    	rainbow = {
-    		enable = true,
-    		extended_mode = true
-    	},
-    	autotag = {
-    		enable = true
-    	}
+		ensure_installed = { 'c', 'cpp', 'lua', 'rust', 'help' },
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false
+		},
+		rainbow = {
+			enable = true,
+			extended_mode = true
+		},
+		autotag = {
+			enable = true
+		}
 	}
 end
 
 function M.run_ts()
 	local ok, tsinstall = pcall(require, 'nvim-treesitter.install')
 	if ok then
-		tsinstall.update{with_sync = true}
+		tsinstall.update { with_sync = true }
 	end
 end
-
 
 function M.setup(use)
 	use {

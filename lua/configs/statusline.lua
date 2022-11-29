@@ -2,7 +2,7 @@ local M = {}
 
 function M.getlsps()
 	local names = {}
-	local clients = vim.lsp.get_active_clients{bufnr = vim.api.nvim_get_current_buf()}
+	local clients = vim.lsp.get_active_clients { bufnr = vim.api.nvim_get_current_buf() }
 
 	for _, lsp in ipairs(clients) do
 		table.insert(names, lsp.name)
@@ -35,7 +35,7 @@ function M.lualine_setup()
 			component_separators = { left = '|', right = '|' }
 		},
 		sections = {
-			lualine_a = { require'configs.statusline'.mode },
+			lualine_a = { require 'configs.statusline'.mode },
 			lualine_b = { 'branch' },
 			lualine_c = {
 				{
@@ -47,7 +47,7 @@ function M.lualine_setup()
 					}
 				}
 			},
-			lualine_x = { 'diagnostics', require'configs.statusline'.getlsps, 'filetype' },
+			lualine_x = { 'diagnostics', require 'configs.statusline'.getlsps, 'filetype' },
 			lualine_y = { 'progress' },
 			lualine_z = { 'location' }
 		},

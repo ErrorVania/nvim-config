@@ -15,9 +15,9 @@ packer.init {
 		end
 	},
 	profile = {
-      enable = true,
-      threshold = 1 -- the amount in ms that a plugin's load time must be over for it to be included in the profile
-    }
+		enable = true,
+		threshold = 1 -- the amount in ms that a plugin's load time must be over for it to be included in the profile
+	}
 }
 
 packer.startup(function(use)

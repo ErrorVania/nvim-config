@@ -9,13 +9,13 @@ function M.bufferline_config()
 	bufferline.setup {
 		options = {
 			offsets = {
-        		{
+				{
 					filetype = 'NvimTree',
 					text = "Files",
 					highlight = 'Directory',
 					text_align = 'center'
-	       	    },
-       	    	{
+				},
+				{
 					filetype = 'undotree',
 					text = "UndoTree",
 					text_align = 'center'
@@ -25,13 +25,13 @@ function M.bufferline_config()
 					text = 'Terminal',
 					text_align = 'center'
 				}
-     	   },
-	        diagnostics = 'nvim_lsp',
-   		    diagnostics_indicator = function(count, level)
-	        	local icon = level:match("error") and " " or ""
-    	    	return " " .. icon .. ' ' .. count
-	    	end
-    	}
+			},
+			diagnostics = 'nvim_lsp',
+			diagnostics_indicator = function(count, level)
+				local icon = level:match("error") and " " or ""
+				return " " .. icon .. ' ' .. count
+			end
+		}
 	}
 end
 
@@ -44,6 +44,5 @@ function M.setup(use)
 		event = 'User IsEditing'
 	}
 end
-
 
 return M

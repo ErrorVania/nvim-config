@@ -6,7 +6,7 @@ function M.mason_config()
 		return
 	end
 
-	mason.setup{
+	mason.setup {
 		ui = {
 			border = 'none'
 		}
@@ -17,7 +17,7 @@ function M.mason_config()
 		colors = colors.get_palette()
 
 		local MasonColor = {
-			MasonHeader = {bg = colors.green, fg = colors.mantle }
+			MasonHeader = { bg = colors.green, fg = colors.mantle }
 		}
 
 		for hl, col in pairs(MasonColor) do
@@ -50,7 +50,5 @@ function M.setup(use)
 		config = M.masonlsp_config
 	}
 end
-
-
 
 return M

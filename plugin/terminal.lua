@@ -3,7 +3,7 @@ if not ok then
 	return
 end
 
-term.setup{
+term.setup {
 	direction = 'float',
 	float_opts = {
 		border = 'curved'

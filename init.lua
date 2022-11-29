@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.api.nvim_create_autocmd(
-	{ "VimEnter"},
+	{ "VimEnter" },
 	{ callback = function() vim.schedule(is_tmux_sess) end }
 )
 
@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd(
 				"mason",
 				"packer"
 			}
-			for index, value in ipairs(blacklist) do
+			for _, value in ipairs(blacklist) do
 				if vim.bo.filetype == value then
 					return
 				end
@@ -117,4 +117,3 @@ vim.api.nvim_create_autocmd(
 		pattern = '*'
 	}
 )
-

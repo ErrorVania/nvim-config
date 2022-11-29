@@ -8,13 +8,13 @@ function M.telescope_setup()
 	end
 
 
-	telescope.setup{
+	telescope.setup {
 		defaults = {
 			prompt_prefix = ' '
 		},
 		extensions = {
 			['ui-select'] = {
-				require('telescope.themes').get_dropdown{}
+				require('telescope.themes').get_dropdown {}
 			},
 			project = {
 				sync_with_nvim_tree = true,
@@ -22,13 +22,13 @@ function M.telescope_setup()
 			}
 		},
 		pickers = {
-			find_files = require('telescope.themes').get_dropdown{
+			find_files = require('telescope.themes').get_dropdown {
 				previewer = false
 			},
-			oldfiles = require('telescope.themes').get_dropdown{
+			oldfiles = require('telescope.themes').get_dropdown {
 				previewer = false
 			},
-			colorscheme = require('telescope.themes').get_dropdown{
+			colorscheme = require('telescope.themes').get_dropdown {
 				previewer = false,
 				prompt_prefix = ' ',
 				prompt_title = 'Themes'
@@ -36,7 +36,6 @@ function M.telescope_setup()
 		}
 	}
 end
-
 
 function M.project_setup()
 	local telescope_ok, telescope = pcall(require, 'telescope')
