@@ -19,8 +19,10 @@ function M.configure_cmp()
 		window = {
 			completion = cmp.config.window.bordered {
 				scrolloff = 1,
+				border = 'single'
 			},
 			documentation = cmp.config.window.bordered {
+				border = 'single'
 			}
 		},
 		sources = cmp.config.sources({
