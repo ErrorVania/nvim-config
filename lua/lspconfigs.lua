@@ -55,4 +55,19 @@ require('mason-lspconfig').setup_handlers {
 			}
 		}
 	end,
+	["clangd"] = function()
+		require('lspconfig').clangd.setup {
+			cmd = {
+				"clangd",
+				"--enable-config",
+				"--all-scopes-completion",
+				"--background-index",
+				"--header-insertion=never",
+				"--query-driver=*"
+			},
+			handlers = handlers,
+			capabilities = caps
+		}
+
+	end
 }
