@@ -11,6 +11,7 @@ vim.opt.autoindent = true
 vim.opt.expandtab = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.pumheight = 10
 
 vim.cmd("set completeopt=menu,menuone,noselect")
 vim.cmd("set noet ci pi sts=0 sw=4 ts=4")

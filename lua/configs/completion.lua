@@ -14,7 +14,11 @@ function M.configure_cmp()
 		},
 		mapping = cmp.mapping.preset.insert {
 			['<C-Space>'] = cmp.mapping.complete(),
-			['<cr>'] = cmp.mapping.confirm({ select = true })
+			['<cr>'] = cmp.mapping.confirm{
+				behavior = cmp.ConfirmBehavior.Insert,
+				select = true
+			},
+			['<tab>'] = cmp.mapping.select_next_item()
 		},
 		window = {
 			completion = cmp.config.window.bordered {
@@ -29,6 +33,7 @@ function M.configure_cmp()
 			{ name = "nvim_lsp" }, { name = "luasnip" }
 		}, { { name = "buffer" } }),
 		formatting = {
+			fields = { 'kind', 'abbr', 'menu' },
 			format = function(_, vim_item)
 				local icons = {
 					Keyword = '',
