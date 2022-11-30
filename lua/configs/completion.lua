@@ -14,7 +14,7 @@ function M.configure_cmp()
 		},
 		mapping = cmp.mapping.preset.insert {
 			['<C-Space>'] = cmp.mapping.complete(),
-			['<cr>'] = cmp.mapping.confirm{
+			['<cr>'] = cmp.mapping.confirm {
 				behavior = cmp.ConfirmBehavior.Insert,
 				select = true
 			},
@@ -23,10 +23,12 @@ function M.configure_cmp()
 		window = {
 			completion = cmp.config.window.bordered {
 				scrolloff = 1,
-				border = 'single'
+				border = 'single',
+				winhighlight = 'Normal:Float'
 			},
 			documentation = cmp.config.window.bordered {
-				border = 'single'
+				border = 'single',
+				winhighlight = 'Normal:Float'
 			}
 		},
 		sources = cmp.config.sources({
@@ -74,7 +76,13 @@ function M.configure_cmp()
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } })
 	})
+	local highlights = {
+		FloatBorder = { fg = require('catppuccin.palettes').get_palette().surface0 }
+	}
 
+	for hl, col in pairs(highlights) do
+		vim.api.nvim_set_hl(0, hl, col)
+	end
 end
 
 function M.setup_autopairs()
