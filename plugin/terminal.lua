@@ -6,6 +6,6 @@ end
 term.setup {
 	direction = 'float',
 	float_opts = {
-		border = 'curved'
+		border = 'single'
 	}
 }
