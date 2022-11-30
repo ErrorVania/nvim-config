@@ -6,6 +6,10 @@ function M.configure_cmp()
 		return
 	end
 
+	vim.api.nvim_set_hl(0, "CmpFloat",
+		{ fg = '#313244' }
+	)
+
 	cmp.setup {
 		snippet = {
 			expand = function(args)
@@ -24,11 +28,11 @@ function M.configure_cmp()
 			completion = cmp.config.window.bordered {
 				scrolloff = 1,
 				border = 'single',
-				winhighlight = 'Normal:Float'
+				winhighlight = 'FloatBorder:CmpFloat'
 			},
 			documentation = cmp.config.window.bordered {
 				border = 'single',
-				winhighlight = 'Normal:Float'
+				winhighlight = 'FloatBorder:CmpFloat'
 			}
 		},
 		sources = cmp.config.sources({
@@ -76,13 +80,6 @@ function M.configure_cmp()
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } })
 	})
-	local highlights = {
-		FloatBorder = { fg = require('catppuccin.palettes').get_palette().surface0 }
-	}
-
-	for hl, col in pairs(highlights) do
-		vim.api.nvim_set_hl(0, hl, col)
-	end
 end
 
 function M.setup_autopairs()
