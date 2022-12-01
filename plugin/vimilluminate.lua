@@ -13,7 +13,7 @@ illuminate.configure {
 local IlluminateColor = {
 	IlluminatedWordRead = { link = 'Visual' },
 	IlluminatedWordWrite = { link = 'Visual' },
-	IlluminatedWordText = {}
+	IlluminatedWordText = { link = 'Visual' }
 }
 
 for hl, col in pairs(IlluminateColor) do
