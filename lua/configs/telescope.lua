@@ -2,8 +2,8 @@ local M = {}
 
 
 function M.telescope_setup()
-	local telescope_ok, telescope = pcall(require, 'telescope')
-	if not telescope_ok then
+	local ok, telescope = pcall(require, 'telescope')
+	if not ok then
 		return
 	end
 
@@ -19,6 +19,12 @@ function M.telescope_setup()
 			project = {
 				sync_with_nvim_tree = true,
 				theme = 'dropdown'
+			},
+			fzf = {
+				fuzzy = true,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = 'smart_case'
 			}
 		},
 		pickers = {
@@ -35,27 +41,12 @@ function M.telescope_setup()
 			}
 		}
 	}
-end
 
-function M.project_setup()
-	local telescope_ok, telescope = pcall(require, 'telescope')
-	if telescope_ok then
-		telescope.load_extension('project')
-	end
-end
 
-function M.file_browser_setup()
-	local telescope_ok, telescope = pcall(require, 'telescope')
-	if telescope_ok then
-		telescope.load_extension('file_browser')
-	end
-end
-
-function M.uiselect_setup()
-	local telescope_ok, telescope = pcall(require, 'telescope')
-	if telescope_ok then
-		telescope.load_extension('ui-select')
-	end
+	telescope.load_extension('project')
+	telescope.load_extension('file_browser')
+	telescope.load_extension('ui-select')
+	telescope.load_extension('fzf')
 end
 
 function M.setup(use)
@@ -71,29 +62,21 @@ function M.setup(use)
 	use {
 		'nvim-telescope/telescope-file-browser.nvim',
 		requires = 'nvim-telescope/telescope.nvim',
-		after = 'telescope.nvim',
-		config = M.file_browser_setup
 	}
 
-	-- use {
-	-- 	'ahmedkhalf/project.nvim',
-	-- 	requires = 'nvim-telescope/telescope.nvim',
-	-- 	after = 'telescope.nvim',
-	-- 	config = M.projects_setup
-	-- }
-	--
 	use {
 		'nvim-telescope/telescope-project.nvim',
 		requires = 'nvim-telescopt/telescope.nvim',
-		after = 'telescope.nvim',
-		config = M.project_setup
 	}
 
 	use {
 		'nvim-telescope/telescope-ui-select.nvim',
 		requires = 'nvim-telescope/telescope.nvim',
-		after = 'telescope.nvim',
-		config = M.uiselect_setup
+	}
+
+	use {
+		'nvim-telescope/telescope-fzf-native.nvim',
+		run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 	}
 end
 
