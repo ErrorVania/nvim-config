@@ -32,7 +32,8 @@ function M.lualine_setup()
 			},
 			globalstatus = true,
 			section_separators = { left = '', right = '' },
-			component_separators = { left = '|', right = '|' }
+			component_separators = { left = '|', right = '|' },
+			theme = 'nord'
 		},
 		sections = {
 			lualine_a = { require 'configs.statusline'.mode },

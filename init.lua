@@ -21,9 +21,6 @@ local bootstrap_packer = function()
 	return false
 end
 
-
-
-
 local packer_bootstrapped = bootstrap_packer()
 
 local packer_ok, packer = pcall(require, 'packer')

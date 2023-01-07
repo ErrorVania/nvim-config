@@ -6,9 +6,9 @@ function M.configure_cmp()
 		return
 	end
 
-	vim.api.nvim_set_hl(0, "CmpFloat",
-		{ fg = '#313244' }
-	)
+	-- vim.api.nvim_set_hl(0, "CmpFloat",
+	-- 	{ fg = '#313244' }
+	-- )
 
 	cmp.setup {
 		snippet = {
@@ -28,11 +28,11 @@ function M.configure_cmp()
 			completion = cmp.config.window.bordered {
 				scrolloff = 1,
 				border = 'single',
-				winhighlight = 'FloatBorder:CmpFloat'
+				-- winhighlight = 'FloatBorder:CmpFloat'
 			},
 			documentation = cmp.config.window.bordered {
 				border = 'single',
-				winhighlight = 'FloatBorder:CmpFloat'
+				-- winhighlight = 'FloatBorder:CmpFloat'
 			}
 		},
 		sources = cmp.config.sources({
