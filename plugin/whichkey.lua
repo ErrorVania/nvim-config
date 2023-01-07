@@ -67,7 +67,8 @@ whichkey.register(
 				u = { '<cmd>PackerUpdate<cr>', 'Update' },
 			},
 			m = { '<cmd>Mason<cr>', 'Mason' }
-		}
+		},
+		o = { '<cmd>OverseerToggle<cr>', "Toggle Overseer"}
 	},
 	{ prefix = "<leader>" }
 )

@@ -8,7 +8,7 @@ function M.config_ts()
 
 	treesitter.setup {
 		auto_install = true,
-		ensure_installed = { 'c', 'cpp', 'lua', 'rust', 'help' },
+		ensure_installed = { 'c', 'cpp', 'lua', 'vim', 'help' },
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false
