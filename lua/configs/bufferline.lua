@@ -1,11 +1,4 @@
-local M = {}
-
-function M.bufferline_config()
-	local ok, bufferline = pcall(require, 'bufferline')
-	if not ok then
-		return
-	end
-
+import('bufferline', function(bufferline)
 	bufferline.setup {
 		options = {
 			offsets = {
@@ -33,16 +26,5 @@ function M.bufferline_config()
 			end
 		}
 	}
-end
+end)
 
-function M.setup(use)
-	use {
-		'akinsho/bufferline.nvim',
-		tag = "v3.*",
-		requires = 'kyazdani42/nvim-web-devicons',
-		config = M.bufferline_config,
-		event = 'User IsEditing'
-	}
-end
-
-return M
