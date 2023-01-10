@@ -39,7 +39,7 @@ end
 vim.api.nvim_create_autocmd(
 	'FileType',
 	{
-		pattern = { 'help', 'checkhealth', 'OverseerList' },
+		pattern = { 'help', 'checkhealth', 'OverseerList', 'ImportManager' },
 		command = [[nnoremap <buffer><silent> q :close<CR>]]
 	}
 )
