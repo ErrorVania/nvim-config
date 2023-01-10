@@ -73,7 +73,7 @@ function M.setup(use)
 		'nvim-tree/nvim-tree.lua',
 		requires = 'nvim-tree/nvim-web-devicons',
 		config = M.config_nvimtree,
-		event = 'User IsEditing'
+		-- event = 'User IsEditing'
 	}
 end
 

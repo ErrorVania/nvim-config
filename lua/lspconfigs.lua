@@ -4,16 +4,21 @@ local handlers = {
 }
 
 local navicok, navic = pcall(require, 'nvim-navic')
+
+local function attach(client, bufnr)
+	if navicok then
+		if client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, bufnr)
+		end
+	end
+end
+
 require('mason-lspconfig').setup_handlers {
 	function(server_name)
 		require('lspconfig')[server_name].setup {
 			capabilities = caps,
 			handlers = handlers,
-			on_attach = function(client, bufnr)
-				if navicok then
-					navic.attach(client, bufnr)
-				end
-			end
+			on_attach = attach
 		}
 	end,
 	["sumneko_lua"] = function()
@@ -26,7 +31,8 @@ require('mason-lspconfig').setup_handlers {
 						globals = { "vim" }
 					}
 				}
-			}
+			},
+			on_attach = attach
 		}
 	end,
 	["clangd"] = function()
@@ -40,7 +46,8 @@ require('mason-lspconfig').setup_handlers {
 				"--query-driver=*"
 			},
 			handlers = handlers,
-			capabilities = caps
+			capabilities = caps,
+			on_attach = attach
 		}
 
 	end
