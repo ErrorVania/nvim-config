@@ -1,5 +1,29 @@
 local M = {}
 
+function import(modules, callback)
+	if modules ~= nil then
+		local result = nil
+		if type(modules) == 'table' then
+			result = {}
+			for _, k in ipairs(modules) do
+				local ok, m = pcall(require, modules[k])
+				if not ok then
+					return
+				end
+				result[modules[k]] = m
+			end
+		elseif type(modules) == 'string' then
+			local ok, m = pcall(require, modules)
+			if ok then
+				result = m
+			end
+		end
+		if callback ~= nil then
+			callback(result)
+		end
+	end
+end
+
 local packer_ok, packer = pcall(require, 'packer')
 if not packer_ok then
 	return M
@@ -22,10 +46,6 @@ packer.init {
 
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
-
-	use { 'miversen33/import.nvim' }
-	require('import')
-
 	use { 'lewis6991/impatient.nvim', config = [[import('impatient')]] }
 
 	use {
@@ -72,7 +92,7 @@ packer.startup(function(use)
 		},
 		run = function()
 			import('nvim-treesitter.install', function(ts)
-				ts.update{ with_sync = true }
+				ts.update { with_sync = true }
 			end)
 		end,
 		config = [[import'configs.treesitter']]
