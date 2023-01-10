@@ -24,9 +24,22 @@ packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'catppuccin/nvim'
 	use { 'lewis6991/impatient.nvim', config = [[require('impatient')]] }
+	use { 'miversen33/import.nvim', as = 'import'}
 
-	require('configs.bufferline').setup(use)
-	require('configs.statusline').setup(use)
+	use {
+		'akinsho/bufferline.nvim',
+		tag = "v3.*",
+		requires = {'kyazdani42/nvim-web-devicons', 'import'},
+		config = [[require'configs.bufferline']],
+		event = 'User IsEditing'
+	}
+
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = {'kyazdani42/nvim-web-devicons', 'import' },
+		config = [[require'configs.statusline']]
+	}
+
 	require('configs.telescope').setup(use)
 	require('configs.git').setup(use)
 
