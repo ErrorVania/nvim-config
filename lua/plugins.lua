@@ -22,42 +22,101 @@ packer.init {
 
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use 'catppuccin/nvim'
-	use { 'lewis6991/impatient.nvim', config = [[require('impatient')]] }
-	use { 'miversen33/import.nvim', as = 'import'}
+
+	use { 'miversen33/import.nvim' }
+	require('import')
+
+	use { 'lewis6991/impatient.nvim', config = [[import('impatient')]] }
 
 	use {
 		'akinsho/bufferline.nvim',
 		tag = "v3.*",
-		requires = {'kyazdani42/nvim-web-devicons', 'import'},
-		config = [[require'configs.bufferline']],
+		requires = { 'kyazdani42/nvim-web-devicons' },
+		config = [[import'configs.bufferline']],
 		event = 'User IsEditing'
 	}
 
+	use 'catppuccin/nvim'
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = {'kyazdani42/nvim-web-devicons', 'import' },
-		config = [[require'configs.statusline']]
+		requires = { 'kyazdani42/nvim-web-devicons' },
+		config = [[import'configs.statusline']]
 	}
 
-	require('configs.telescope').setup(use)
-	require('configs.git').setup(use)
+	use 'nvim-telescope/telescope-file-browser.nvim'
+	use 'nvim-telescope/telescope-project.nvim'
+	use 'nvim-telescope/telescope-ui-select.nvim'
+
+	use {
+		'nvim-telescope/telescope-fzf-native.nvim',
+		run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+	}
+
+	use {
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.0',
+		requires = { 'nvim-lua/plenary.nvim' },
+		config = [[import'configs.telescope']]
+	}
+
 
 	use 'famiu/bufdelete.nvim'
 	use 'goolord/alpha-nvim'
 	use 'folke/which-key.nvim'
 
-	require('configs.treesitter').setup(use)
-	require('configs.nvimtree').setup(use)
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		requires = {
+			{ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' },
+			{ 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
+		},
+		run = function()
+			import('nvim-treesitter.install', function(ts)
+				ts.update{ with_sync = true }
+			end)
+		end,
+		config = [[import'configs.treesitter']]
+	}
+
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = 'nvim-tree/nvim-web-devicons',
+		config = [[import'configs.nvimtree']]
+	}
 
 	use {
 		'numToStr/Comment.nvim',
-		config = function() require('Comment').setup() end,
+		config = [[import('Comment', function(c) c.setup() end)]],
 		event = 'User IsEditing'
 	}
 	use { 'akinsho/toggleterm.nvim', tag = '*' }
 
-	require('configs.lsp').setup(use)
+
+	use {
+		'williamboman/mason.nvim',
+		config = [[import'configs.mason']]
+	}
+
+	use { 'neovim/nvim-lspconfig' }
+
+	use {
+		'williamboman/mason-lspconfig.nvim',
+		config = [[import('mason-lspconfig', function(m) m.setup() end)]]
+	}
+
+	use {
+		'lewis6991/gitsigns.nvim',
+		config = [[import('gitsigns', function(gs) gs.setup() end)]],
+		event = 'User InGitRepo',
+		after = 'nvim-notify'
+	}
+
+	use {
+		'akinsho/git-conflict.nvim',
+		tag = '*',
+		config = [[import('git-conflict', function(gs) gs.setup() end)]],
+		event = 'User InGitRepo'
+	}
 
 	use { 'folke/trouble.nvim', event = 'LspAttach' }
 	use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter' }
@@ -75,32 +134,18 @@ packer.startup(function(use)
 	use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 	use { 'RRethy/vim-illuminate', event = 'BufEnter' }
 	use 'stevearc/overseer.nvim'
-	use 'MTDL9/vim-log-highlighting'
 	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", event = 'LspAttach' }
+
 	use { 'fgheng/winbar.nvim' }
+
 	use {
 		'andersevenrud/nordic.nvim',
 		config = function()
-			-- The table used in this example contains the default settings.
-			-- Modify or remove these to your liking (this also applies to alternatives below):
 			require('nordic').colorscheme({
-				-- Underline style used for spelling
-				-- Options: 'none', 'underline', 'undercurl'
 				underline_option = 'none',
-
-				-- Italics for certain keywords such as constructors, functions,
-				-- labels and namespaces
 				italic = true,
-
-				-- Italic styled comments
 				italic_comments = false,
-
-				-- Minimal mode: different choice of colors for Tabs and StatusLine
 				minimal_mode = false,
-
-				-- Darker backgrounds for certain sidebars, popups, etc.
-				-- Options: true, false, or a table of explicit names
-				-- Supported: terminal, qf, vista_kind, packer, nvim-tree, telescope, whichkey
 				alternate_backgrounds = true,
 			})
 		end

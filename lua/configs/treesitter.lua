@@ -1,12 +1,5 @@
-local M = {}
-
-function M.config_ts()
-	local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-	if not ok then
-		return
-	end
-
-	treesitter.setup {
+import('nvim-treesitter.configs', function(tsc)
+	tsc.setup {
 		auto_install = true,
 		ensure_installed = { 'c', 'cpp', 'lua', 'vim', 'help' },
 		highlight = {
@@ -21,25 +14,4 @@ function M.config_ts()
 			enable = true
 		}
 	}
-end
-
-function M.run_ts()
-	local ok, tsinstall = pcall(require, 'nvim-treesitter.install')
-	if ok then
-		tsinstall.update { with_sync = true }
-	end
-end
-
-function M.setup(use)
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		requires = {
-			{ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' },
-			{ 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
-		},
-		run = M.run_ts,
-		config = M.config_ts
-	}
-end
-
-return M
+end)

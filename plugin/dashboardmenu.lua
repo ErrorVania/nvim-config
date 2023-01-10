@@ -11,7 +11,7 @@ dashboard.section.buttons.val = {
 	dashboard.button('SPC f f', ' Find file'),
 	dashboard.button('SPC f h', ' Recent files'),
 	dashboard.button('SPC f p', 'ﴬ Projects'),
-	dashboard.button('SPC N c', '漣Settings')
+	dashboard.button('SPC N c', '漣 Settings')
 }
 
 

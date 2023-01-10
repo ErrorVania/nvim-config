@@ -1,4 +1,3 @@
-require('import')
 import('lualine', function(lualine)
 
 	local function getlsps()

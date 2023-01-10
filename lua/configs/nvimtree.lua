@@ -1,11 +1,4 @@
-local M = {}
-
-function M.config_nvimtree()
-	local ok, nvimtree = pcall(require, 'nvim-tree')
-	if not ok then
-		return
-	end
-
+import('nvim-tree', function(nvimtree)
 	nvimtree.setup {
 		sync_root_with_cwd = true,
 		respect_buf_cwd = true,
@@ -54,27 +47,4 @@ function M.config_nvimtree()
 			ignore = false
 		}
 	}
-
-	local colorok, colors = pcall(require, 'catppuccin.palettes')
-	if colorok then
-		colors = colors.get_palette()
-		local hs = {
-			NvimTreeGitDirty = { fg = colors.sky }
-		}
-
-		for hl, col in pairs(hs) do
-			vim.api.nvim_set_hl(0, hl, col)
-		end
-	end
-end
-
-function M.setup(use)
-	use {
-		'nvim-tree/nvim-tree.lua',
-		requires = 'nvim-tree/nvim-web-devicons',
-		config = M.config_nvimtree,
-		-- event = 'User IsEditing'
-	}
-end
-
-return M
+end)
