@@ -1,4 +1,3 @@
-require('import')
 import('telescope', function(telescope)
 	telescope.setup {
 		defaults = {

@@ -17,9 +17,9 @@ vim.opt.fillchars = 'eob: '
 vim.cmd("set completeopt=menu,menuone,noselect")
 vim.cmd("set noet ci pi sts=0 sw=4 ts=4")
 
-local packer_ok, _ = pcall(require, 'packer')
-if packer_ok then
+import('packer', function(_)
 	vim.opt.foldmethod = "expr"
 	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 	vim.opt.foldlevel = 20
-end
+	vim.cmd[[colorscheme nord]]
+end)
