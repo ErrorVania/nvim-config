@@ -4,7 +4,7 @@ import('bufferline', function(bufferline)
 			offsets = {
 				{
 					filetype = 'NvimTree',
-					text = "Files",
+					text = "File Explorer",
 					highlight = 'Directory',
 					text_align = 'center'
 				},
@@ -20,10 +20,14 @@ import('bufferline', function(bufferline)
 				}
 			},
 			diagnostics = 'nvim_lsp',
-			diagnostics_indicator = function(count, level)
+			diagnostics_indicator = function(count, level, _, ctx)
+				if ctx.buffer:current() then
+					return ''
+				end
 				local icon = level:match("error") and " " or ""
 				return " " .. icon .. ' ' .. count
-			end
+			end,
+			separator_style = 'slant'
 		}
 	}
 end)
