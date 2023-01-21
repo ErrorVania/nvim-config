@@ -153,6 +153,7 @@ import('packer', function(packer)
 
 		use { 'fgheng/winbar.nvim' }
 		use { 'shaunsingh/nord.nvim' }
+		use { "catppuccin/nvim", as = "catppuccin" }
 	end)
 end)
 
