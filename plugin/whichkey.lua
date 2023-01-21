@@ -49,7 +49,8 @@ whichkey.register(
 			D = { vim.lsp.buf.definition, 'Go to Definition' },
 			r = { vim.lsp.buf.references, 'Go to References' },
 			R = { vim.lsp.buf.rename, 'Rename' },
-			f = { vim.lsp.buf.format, 'Format' }
+			f = { vim.lsp.buf.format, 'Format' },
+			a = { vim.lsp.buf.code_action, 'Code Action'}
 		},
 		g = {
 			name = "Git",
