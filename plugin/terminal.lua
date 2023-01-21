@@ -3,9 +3,9 @@ if not ok then
 	return
 end
 
-require("winbar").setup {
-	enabled = true
-}
+-- require("winbar").setup {
+-- 	enabled = true
+-- }
 
 term.setup {
 	size = function(t)
