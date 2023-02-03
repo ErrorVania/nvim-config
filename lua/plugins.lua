@@ -87,7 +87,7 @@ import('packer', function(packer)
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
 				import('nvim-treesitter.install', function(ts)
-					ts.update { with_sync = true }
+					ts.update { with_sync = false }
 				end)
 			end,
 			config = [[import'configs.treesitter']]
@@ -153,7 +153,7 @@ import('packer', function(packer)
 
 		use { 'fgheng/winbar.nvim' }
 		use { 'shaunsingh/nord.nvim' }
-		use { "catppuccin/nvim", as = "catppuccin" }
+		use { "catppuccin/nvim", as = "catppuccin", run = [[require('catppuccin').compile()]] }
 	end)
 end)
 
