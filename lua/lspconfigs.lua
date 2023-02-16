@@ -29,8 +29,8 @@ import('mason-lspconfig', function(mlsp)
 				on_attach = attach
 			}
 		end,
-		["sumneko_lua"] = function()
-			require('lspconfig').sumneko_lua.setup {
+		["lua_ls"] = function()
+			require('lspconfig').lua_ls.setup {
 				capabilities = caps,
 				handlers = handlers,
 				settings = {
