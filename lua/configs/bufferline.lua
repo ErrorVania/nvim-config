@@ -27,7 +27,7 @@ import('bufferline', function(bufferline)
 				local icon = level:match("error") and " " or ""
 				return " " .. icon .. ' ' .. count
 			end,
-			separator_style = 'slant'
+			separator_style = 'thick'
 		}
 	}
 end)
