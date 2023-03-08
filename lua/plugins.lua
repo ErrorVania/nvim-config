@@ -154,6 +154,7 @@ import('packer', function(packer)
 		use { 'fgheng/winbar.nvim' }
 		use { 'shaunsingh/nord.nvim' }
 		use { "catppuccin/nvim", as = "catppuccin", run = [[require('catppuccin').compile()]] }
+		use 'navarasu/onedark.nvim'
 	end)
 end)
 
