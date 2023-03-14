@@ -1,7 +1,12 @@
 import('telescope', function(telescope)
 	telescope.setup {
 		defaults = {
-			prompt_prefix = ' '
+			prompt_prefix = ' ',
+			mappings = {
+				i = {
+					['<esc>'] = require('telescope.actions').close
+				}
+			}
 		},
 		extensions = {
 			['ui-select'] = {
@@ -32,6 +37,7 @@ import('telescope', function(telescope)
 			}
 		}
 	}
+
 
 	telescope.load_extension('project')
 	telescope.load_extension('file_browser')

@@ -16,7 +16,8 @@ local function _lazygit_toggle()
 		local lazygit = Terminal:new({
 			cmd = "lazygit",
 			hidden = true,
-			direction = 'float'
+			direction = 'float',
+			close_on_exit = true
 		})
 		lazygit:toggle()
 	end

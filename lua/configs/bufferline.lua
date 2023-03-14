@@ -4,9 +4,10 @@ import('bufferline', function(bufferline)
 			offsets = {
 				{
 					filetype = 'NvimTree',
-					text = "File Explorer",
+					text = "",
 					highlight = 'Directory',
-					text_align = 'center'
+					text_align = 'center',
+					separator = false
 				},
 				{
 					filetype = 'undotree',
@@ -27,7 +28,7 @@ import('bufferline', function(bufferline)
 				local icon = level:match("error") and " " or ""
 				return " " .. icon .. ' ' .. count
 			end,
-			separator_style = 'slant'
+			separator_style = 'thin'
 		}
 	}
 end)
