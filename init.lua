@@ -65,10 +65,10 @@ vim.api.nvim_create_autocmd(
 )
 
 local function check_git_repo()
-	local cmd = "git rev-parse --is-inside-work-tree"
-	if vim.fn.system(cmd) == "true\n" then
-		vim.api.nvim_exec_autocmds("User", { pattern = "InGitRepo" })
-		return true -- removes autocmd after lazy loading git related plugins
+	local f = vim.fs.find('.git', { type = 'directory' })
+	if f ~= {} then
+		vim.api.nvim_exec_autocmds('User', { pattern = 'InGitRepo' })
+		return true
 	end
 end
 
