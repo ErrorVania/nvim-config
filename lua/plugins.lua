@@ -119,6 +119,9 @@ import('packer', function(packer)
 			config = [[import('mason-lspconfig', function(m) m.setup() end)]]
 		}
 
+		use 'mfussenegger/nvim-dap'
+		use 'jay-babu/mason-nvim-dap.nvim'
+
 		use {
 			'lewis6991/gitsigns.nvim',
 			config = [[import('gitsigns', function(gs) gs.setup() end)]],
@@ -155,6 +158,7 @@ import('packer', function(packer)
 		use { 'shaunsingh/nord.nvim' }
 		use { "catppuccin/nvim", as = "catppuccin", run = [[require('catppuccin').compile()]] }
 		use 'navarasu/onedark.nvim'
+		use {'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end}
 	end)
 end)
 
