@@ -65,7 +65,8 @@ import('packer', function(packer)
 
 		use {
 			'nvim-telescope/telescope-fzf-native.nvim',
-			run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+			run =
+			'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 		}
 
 		use {
@@ -119,6 +120,10 @@ import('packer', function(packer)
 			config = [[import('mason-lspconfig', function(m) m.setup() end)]]
 		}
 
+		use 'mfussenegger/nvim-dap'
+		use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+		use 'jay-babu/mason-nvim-dap.nvim'
+
 		use {
 			'lewis6991/gitsigns.nvim',
 			config = [[import('gitsigns', function(gs) gs.setup() end)]],
@@ -155,6 +160,7 @@ import('packer', function(packer)
 		use { 'shaunsingh/nord.nvim' }
 		use { "catppuccin/nvim", as = "catppuccin", run = [[require('catppuccin').compile()]] }
 		use 'navarasu/onedark.nvim'
+		use { 'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end }
 	end)
 end)
 
