@@ -81,9 +81,6 @@ import('packer', function(packer)
 		use 'goolord/alpha-nvim'
 		use 'folke/which-key.nvim'
 
-		use 'p00f/nvim-ts-rainbow'
-		use 'windwp/nvim-ts-autotag'
-
 		use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
@@ -91,6 +88,7 @@ import('packer', function(packer)
 					ts.update { with_sync = false }
 				end)
 			end,
+			requires = {'p00f/nvim-ts-rainbow', 'windwp/nvim-ts-autotag'},
 			config = [[import'configs.treesitter']]
 		}
 
