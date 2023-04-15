@@ -88,7 +88,7 @@ import('packer', function(packer)
 					ts.update { with_sync = false }
 				end)
 			end,
-			requires = {'p00f/nvim-ts-rainbow', 'windwp/nvim-ts-autotag'},
+			requires = { 'p00f/nvim-ts-rainbow', 'windwp/nvim-ts-autotag' },
 			config = [[import'configs.treesitter']]
 		}
 
