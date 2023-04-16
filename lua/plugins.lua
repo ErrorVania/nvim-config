@@ -110,8 +110,7 @@ import('packer', function(packer)
 
 		use {
 			'williamboman/mason.nvim',
-			config = [[import'configs.mason']],
-			run = ':MasonUpdate'
+			config = [[import'configs.mason']]
 		}
 
 		use {
@@ -169,8 +168,5 @@ import('packer', function(packer)
 		use { 'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end }
 	end)
 end)
-
-if packer_bootstrapped then
-end
 
 return M
