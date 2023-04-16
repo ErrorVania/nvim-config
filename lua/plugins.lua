@@ -136,7 +136,7 @@ import('packer', function(packer)
 			event = 'User InGitRepo'
 		}
 
-		use { 'folke/trouble.nvim', event = 'LspAttach' }
+		use { 'folke/trouble.nvim', event = 'LspAttach', config = function() import('trouble', function(t) t.setup() end) end}
 		use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter' }
 
 		require('configs.completion').setup(use)
@@ -151,7 +151,6 @@ import('packer', function(packer)
 		use 'tiagovla/scope.nvim'
 		use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 		use { 'RRethy/vim-illuminate', event = 'BufEnter' }
-		use 'stevearc/overseer.nvim'
 		use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", event = 'LspAttach' }
 
 		use { 'fgheng/winbar.nvim' }

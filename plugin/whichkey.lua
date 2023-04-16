@@ -70,8 +70,8 @@ whichkey.register(
 			},
 			m = { '<cmd>Mason<cr>', 'Mason' }
 		},
-		o = { '<cmd>OverseerToggle<cr>', "Toggle Overseer"},
-		e = { function() import('nvim-tree.api', function(n) n.tree.toggle{} end) end, 'Open NvimTree'}
+		e = { function() import('nvim-tree.api', function(n) n.tree.toggle{} end) end, 'Open NvimTree'},
+		c = {'<cmd>Bdelete<cr>', 'Close Buffer'}
 	},
 	{ prefix = "<leader>" }
 )

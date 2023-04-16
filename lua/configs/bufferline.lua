@@ -2,13 +2,13 @@ import('bufferline', function(bufferline)
 	bufferline.setup {
 		options = {
 			offsets = {
-				{
-					filetype = 'NvimTree',
-					text = "",
-					highlight = 'Directory',
-					text_align = 'center',
-					separator = false
-				},
+				-- {
+				-- 	filetype = 'NvimTree',
+				-- 	text = "",
+				-- 	highlight = 'Directory',
+				-- 	text_align = 'center',
+				-- 	separator = false
+				-- },
 				{
 					filetype = 'undotree',
 					text = "UndoTree",
