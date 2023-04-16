@@ -79,7 +79,9 @@ import('packer', function(packer)
 
 
 		use 'famiu/bufdelete.nvim'
-		use 'goolord/alpha-nvim'
+
+		use {'goolord/alpha-nvim', config = [[import'configs.dashboardmenu']]}
+		
 		use 'folke/which-key.nvim'
 
 		use {
