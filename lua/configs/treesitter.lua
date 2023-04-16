@@ -1,7 +1,8 @@
 import('nvim-treesitter.configs', function(tsc)
 	tsc.setup {
 		auto_install = true,
-		ensure_installed = { 'lua'},
+		-- ensure_installed = { 'lua'},
+		-- sync_install = true,
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false
