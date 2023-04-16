@@ -80,9 +80,9 @@ import('packer', function(packer)
 
 		use 'famiu/bufdelete.nvim'
 
-		use {'goolord/alpha-nvim', config = [[import'configs.dashboardmenu']]}
-		
-		use {'folke/which-key.nvim', config = [[import'configs.whichkey']]}
+		use { 'goolord/alpha-nvim', config = [[import'configs.dashboardmenu']] }
+
+		use { 'folke/which-key.nvim', config = [[import'configs.whichkey']] }
 
 		use {
 			'nvim-treesitter/nvim-treesitter',
@@ -158,14 +158,18 @@ import('packer', function(packer)
 			config = [[require('todo-comments').setup()]] }
 		use 'stevearc/dressing.nvim'
 		use { 'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession' }
-		use {'tiagovla/scope.nvim', config = function() import('scope', function(s) s.setup() end) end}
+		use { 'tiagovla/scope.nvim', config = function() import('scope', function(s) s.setup() end) end }
 		use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 		use { 'RRethy/vim-illuminate', event = 'BufEnter', config = [[import'configs.vimilluminate']] }
 		use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", event = 'LspAttach' }
 
 		use { 'fgheng/winbar.nvim' }
 		use { 'shaunsingh/nord.nvim' }
-		use { "catppuccin/nvim", as = "catppuccin", run = function() import('catppuccin', function(c) c.compile() vim.cmd('colorscheme catppuccin-frappe') end) end }
+		use { "catppuccin/nvim", as = "catppuccin", run = function() import('catppuccin',
+			function(c)
+				c.compile()
+				vim.cmd('colorscheme catppuccin-frappe')
+			end) end }
 		use 'navarasu/onedark.nvim'
 		use { 'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end }
 	end)
