@@ -22,10 +22,7 @@ local function _edit_config_files()
 	end
 end
 
-import({'which-key', 'nvim-tree.api'}, function(table)
-	local wk = table['which-key']
-	local nv = table['nvim-tree.api']
-
+import('which-key', function(wk)
 	wk.setup{
 		window = {
 			border = 'single'
@@ -69,7 +66,7 @@ import({'which-key', 'nvim-tree.api'}, function(table)
 			},
 			m = { '<cmd>Mason<cr>', 'Mason' }
 		},
-		e = { nv.tree.toggle, 'Open NvimTree'},
+		e = { function() import('nvim-tree.api', function(n) n.tree.toggle{} end) end, 'Open NvimTree'},
 		c = {'<cmd>Bdelete<cr>', 'Close Buffer'}
 	},
 	{ prefix = "<leader>" }
