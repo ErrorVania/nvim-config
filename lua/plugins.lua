@@ -5,7 +5,7 @@ function import(modules, callback)
 		local result = nil
 		if type(modules) == 'table' then
 			result = {}
-			for _, k in ipairs(modules) do
+			for k = 1, #modules do
 				local ok, m = pcall(require, modules[k])
 				if not ok then
 					return
