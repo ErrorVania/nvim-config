@@ -158,7 +158,7 @@ import('packer', function(packer)
 			config = [[require('todo-comments').setup()]] }
 		use 'stevearc/dressing.nvim'
 		use { 'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession' }
-		use 'tiagovla/scope.nvim'
+		use {'tiagovla/scope.nvim', config = function() import('scope', function(s) s.setup() end) end}
 		use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
 		use { 'RRethy/vim-illuminate', event = 'BufEnter' }
 		use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", event = 'LspAttach' }
