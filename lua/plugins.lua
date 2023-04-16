@@ -165,7 +165,7 @@ import('packer', function(packer)
 
 		use { 'fgheng/winbar.nvim' }
 		use { 'shaunsingh/nord.nvim' }
-		use { "catppuccin/nvim", as = "catppuccin", run = function() import('catppuccin', function(c) c.compile() end) end }
+		use { "catppuccin/nvim", as = "catppuccin", run = function() import('catppuccin', function(c) c.compile() vim.cmd('colorscheme catppuccin-frappe') end) end }
 		use 'navarasu/onedark.nvim'
 		use { 'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end }
 	end)
