@@ -139,7 +139,14 @@ import('packer', function(packer)
 		}
 
 		use { 'folke/trouble.nvim', event = 'LspAttach', config = function() import('trouble', function(t) t.setup() end) end }
-		use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter' }
+		use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter', config = function()
+			import('indent_blankline', function(ibl)
+				ibl.setup {
+					show_end_of_line = true,
+					space_char_blankline = ' '
+				}
+			end)
+		end}
 
 		require('configs.completion').setup(use)
 
@@ -162,5 +169,8 @@ import('packer', function(packer)
 		use { 'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end }
 	end)
 end)
+
+if packer_bootstrapped then
+end
 
 return M
