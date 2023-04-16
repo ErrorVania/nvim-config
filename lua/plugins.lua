@@ -110,7 +110,8 @@ import('packer', function(packer)
 
 		use {
 			'williamboman/mason.nvim',
-			config = [[import'configs.mason']]
+			config = [[import'configs.mason']],
+			run = ':MasonUpdate'
 		}
 
 		use {
