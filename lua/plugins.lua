@@ -8,7 +8,7 @@ function import(modules, callback)
 			for k = 1, #modules do
 				local ok, m = pcall(require, modules[k])
 				if not ok then
-					return
+					modules[k] = nil
 				end
 				result[modules[k]] = m
 			end
