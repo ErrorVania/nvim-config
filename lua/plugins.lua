@@ -9,8 +9,9 @@ function import(modules, callback)
 				local ok, m = pcall(require, modules[k])
 				if not ok then
 					modules[k] = nil
+				else
+					result[modules[k]] = m
 				end
-				result[modules[k]] = m
 			end
 		elseif type(modules) == 'string' then
 			local ok, m = pcall(require, modules)
@@ -18,7 +19,7 @@ function import(modules, callback)
 				result = m
 			end
 		end
-		if callback ~= nil then
+		if callback ~= nil and result ~= nil then
 			callback(result)
 		end
 	end
