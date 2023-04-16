@@ -107,7 +107,7 @@ import('packer', function(packer)
 			config = [[import('Comment', function(c) c.setup() end)]],
 			event = 'User IsEditing'
 		}
-		use { 'akinsho/toggleterm.nvim', tag = '*' }
+		use { 'akinsho/toggleterm.nvim', tag = '*', config = [[import'configs.terminal']] }
 
 
 		use {
