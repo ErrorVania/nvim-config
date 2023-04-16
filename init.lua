@@ -33,6 +33,11 @@ if packer_ok then
 		require("keymaps")
 	else
 		packer.sync()
+		vim.api.nvim_create_autocmd('User', {pattern='PackerComplete', command=[[lua PackerHasFinished()]]})
+		function PackerHasFinished()
+			vim.notify('Please close Neovim!')
+			print('Please close Neovim!')
+		end
 	end
 end
 
