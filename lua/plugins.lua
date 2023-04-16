@@ -85,7 +85,7 @@ import('packer', function(packer)
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
 				import('nvim-treesitter.install', function(ts)
-					ts.update{}
+					ts.update {}
 				end)
 			end,
 			requires = { 'p00f/nvim-ts-rainbow', 'windwp/nvim-ts-autotag' },
@@ -111,10 +111,9 @@ import('packer', function(packer)
 			config = [[import'configs.mason']]
 		}
 
-		use { 'neovim/nvim-lspconfig' }
-
 		use {
 			'williamboman/mason-lspconfig.nvim',
+			requires = { 'neovim/nvim-lspconfig' },
 			config = [[import('mason-lspconfig', function(m) m.setup() end)]]
 		}
 
@@ -136,7 +135,7 @@ import('packer', function(packer)
 			event = 'User InGitRepo'
 		}
 
-		use { 'folke/trouble.nvim', event = 'LspAttach', config = function() import('trouble', function(t) t.setup() end) end}
+		use { 'folke/trouble.nvim', event = 'LspAttach', config = function() import('trouble', function(t) t.setup() end) end }
 		use { 'lukas-reineke/indent-blankline.nvim', event = 'BufWinEnter' }
 
 		require('configs.completion').setup(use)
