@@ -82,7 +82,7 @@ import('packer', function(packer)
 
 		use {'goolord/alpha-nvim', config = [[import'configs.dashboardmenu']]}
 		
-		use 'folke/which-key.nvim'
+		use {'folke/which-key.nvim', config = [[import'configs.whichkey']]}
 
 		use {
 			'nvim-treesitter/nvim-treesitter',
