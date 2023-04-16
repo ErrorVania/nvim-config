@@ -85,7 +85,7 @@ import('packer', function(packer)
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
 				import('nvim-treesitter.install', function(ts)
-					ts.update { with_sync = false }
+					ts.update{}
 				end)
 			end,
 			requires = { 'p00f/nvim-ts-rainbow', 'windwp/nvim-ts-autotag' },
