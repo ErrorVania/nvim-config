@@ -9,7 +9,6 @@ local nmap = function(mode, keys, command)
 	return map(mode, keys, command, { noremap = true })
 end
 
-nmap('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
 nmap('n', '<C-s>', '<cmd>w<cr>')
 nmap('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>')
 nmap('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>')
