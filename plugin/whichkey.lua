@@ -1,14 +1,3 @@
-local ok, whichkey = pcall(require, 'which-key')
-if not ok then
-	return
-end
-
-whichkey.setup {
-	window = {
-		border = 'single'
-	}
-}
-
 local function _lazygit_toggle()
 	local tterm_ok, term = pcall(require, 'toggleterm.terminal')
 	if tterm_ok then
@@ -33,7 +22,14 @@ local function _edit_config_files()
 	end
 end
 
-whichkey.register(
+import('which-key', function(wk)
+	wk.setup{
+		window = {
+			border = 'single'
+		}
+	}
+
+	wk.register(
 	{
 		f = {
 			name = "Find",
@@ -75,3 +71,4 @@ whichkey.register(
 	},
 	{ prefix = "<leader>" }
 )
+end)
