@@ -38,7 +38,7 @@ import('which-key', function(wk)
 			h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
 			p = { "<cmd>Telescope project<cr>", "Projects" },
 			b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
-			c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes" }
+			c = { require'configs.themepicker'.run, "Colorschemes" }
 		},
 		l = {
 			name = "LSP",
