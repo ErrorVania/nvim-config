@@ -98,27 +98,4 @@ function M.setup_autopairs()
 	cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
 end
 
-function M.setup(use)
-	use {
-		'hrsh7th/nvim-cmp',
-		requires = {
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'hrsh7th/cmp-cmdline' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-			{ 'L3MON4D3/LuaSnip' },
-		},
-		config = M.configure_cmp,
-		--event = 'User IsEditing'
-	}
-
-	use {
-		'windwp/nvim-autopairs',
-		requires = 'hrsh7th/nvim-cmp',
-		after = 'nvim-cmp',
-		config = M.setup_autopairs
-	}
-end
-
 return M

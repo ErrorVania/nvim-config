@@ -1,43 +1,45 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- bootstrap packer - requires git
-local bootstrap_packer = function()
+-- bootstrap lazy - requires git
+local bootstrap_lazy = function()
 	local fn = vim.fn
-	local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-	if fn.empty(fn.glob(install_path)) > 0 then
+	local install_path = fn.stdpath('data') .. '/lazy/lazy.nvim'
+	if not vim.loop.fs_stat(install_path) then
 		if fn.executable('git') ~= 1 then
-			print 'could not find git executable, cannot bootstrap packer!'
+			print 'could not find git executable, cannot bootstrap lazy!'
 			os.exit()
 		end
 
 		fn.system {
-			'git', 'clone', '--depth', '1',
-			'https://github.com/wbthomason/packer.nvim', install_path
+			'git', 'clone', '--filter=blob:none',
+			'https://github.com/folke/lazy.nvim.git', '--branch=stable', install_path
 		}
-		vim.cmd [[packadd packer.nvim]]
+		vim.opt.rtp:prepend(install_path)
 		return true
 	end
+	vim.opt.rtp:prepend(install_path)
 	return false
 end
 
-local packer_bootstrapped = bootstrap_packer()
+local lazy_bootstrapped = bootstrap_lazy()
 
-local packer_ok, packer = pcall(require, 'packer')
-if packer_ok then
-	require('plugins')
-
-	if not packer_bootstrapped and packer_ok then
+local lazy_ok, lazy = pcall(require, 'lazy')
+if lazy_ok then
+	-- require('plugins')
+	vim.g.mapleader = ' '
+	lazy.setup('plugins')
+	if not lazy_bootstrapped and lazy_ok then
 		require('vim-opts')
 		require("lspconfigs")
 		require("keymaps")
-	else
-		packer.sync()
-		vim.api.nvim_create_autocmd('User', {pattern='PackerComplete', command=[[lua PackerHasFinished()]]})
-		function PackerHasFinished()
-			vim.notify('Please close Neovim!')
-			print('Please close Neovim!')
-		end
+	-- else
+	-- 	lazy.sync()
+	-- 	vim.api.nvim_create_autocmd('User', {pattern='PackerComplete', command=[[lua PackerHasFinished()]]})
+	-- 	function PackerHasFinished()
+	-- 		vim.notify('Please close Neovim!')
+	-- 		print('Please close Neovim!')
+	-- 	end
 	end
 end
 
@@ -54,18 +56,6 @@ vim.api.nvim_create_autocmd(
 	{
 		pattern = { 'alpha' },
 		command = [[nnoremap <buffer><silent> q :quit<CR>]]
-	}
-)
-
-vim.api.nvim_create_autocmd(
-	'BufWritePost',
-	{
-		pattern = { 'plugins.lua' },
-		callback = function()
-			vim.cmd [[luafile %]]
-			packer.compile()
-			vim.notify('Reloaded Config')
-		end
 	}
 )
 

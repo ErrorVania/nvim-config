@@ -47,14 +47,16 @@ end
 
 function M.set_theme(theme)
 	if startswith(theme, 'catppuccin') then
-		require("catppuccin").setup {
-			highlight_overrides = {
-				latte = telescopeBorderless('latte'),
-				frappe = telescopeBorderless('frappe'),
-				macchiato = telescopeBorderless('macchiato'),
-				mocha = telescopeBorderless('mocha'),
-			},
-		}
+		import("catppuccin", function(c)
+			c.setup {
+				highlight_overrides = {
+					latte = telescopeBorderless('latte'),
+					frappe = telescopeBorderless('frappe'),
+					macchiato = telescopeBorderless('macchiato'),
+					mocha = telescopeBorderless('mocha'),
+				},
+			}
+		end)
 	end
 	vim.cmd('colorscheme ' .. theme)
 end

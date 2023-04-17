@@ -3,7 +3,6 @@ local map = vim.keymap.set
 
 -- leader
 map('n', '<Space>', '', {})
-vim.g.mapleader = ' '
 
 local nmap = function(mode, keys, command)
 	return map(mode, keys, command, { noremap = true })
