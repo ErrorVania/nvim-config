@@ -15,7 +15,8 @@ local function attach(client, bufnr)
 			bind = true,
 			handler_opts = {
 				border = "single"
-			}
+			},
+			hint_enable = false
 		}, bufnr)
 	end)
 end
