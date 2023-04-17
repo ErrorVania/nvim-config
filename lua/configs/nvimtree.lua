@@ -23,7 +23,7 @@ import('nvim-tree', function(nvimtree)
 		},
 		renderer = {
 			highlight_opened_files = 'name',
-			indent_width = 4,
+			indent_width = 2,
 			indent_markers = {
 				enable = true,
 			},
