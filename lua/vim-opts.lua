@@ -21,5 +21,5 @@ import('packer', function(_)
 	vim.opt.foldmethod = "expr"
 	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 	vim.opt.foldlevel = 20
-	require('configs.theme').set_theme('catppuccin-mocha')
+	require('configs.theme').load_theme()
 end)

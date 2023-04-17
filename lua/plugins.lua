@@ -169,7 +169,10 @@ import('packer', function(packer)
 			import('catppuccin',
 				function(c)
 					c.compile()
-					require('configs.theme').set_theme('catppuccin-mocha')
+					import('configs.theme', function(t)
+						t.save_theme('catppuccin-frappe')
+						t.load_theme()
+					end)
 				end)
 		end }
 		use 'navarasu/onedark.nvim'
