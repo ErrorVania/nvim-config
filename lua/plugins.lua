@@ -79,6 +79,7 @@ import('packer', function(packer)
 
 
 		use 'famiu/bufdelete.nvim'
+		use {'folke/neodev.nvim', event = 'LspAttach'}
 
 		use { 'goolord/alpha-nvim', config = [[import'configs.dashboardmenu']] }
 
