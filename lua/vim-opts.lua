@@ -18,8 +18,5 @@ vim.cmd("set completeopt=menu,menuone,noselect")
 vim.cmd("set noet ci pi sts=0 sw=4 ts=4")
 
 import('packer', function(_)
-	vim.opt.foldmethod = "expr"
-	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-	vim.opt.foldlevel = 20
 	require('configs.theme').load_theme()
 end)
