@@ -1,3 +1,5 @@
+import = require'import'
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -26,20 +28,13 @@ local lazy_bootstrapped = bootstrap_lazy()
 
 local lazy_ok, lazy = pcall(require, 'lazy')
 if lazy_ok then
-	-- require('plugins')
 	vim.g.mapleader = ' '
-	lazy.setup({spec = 'plugins', opts = { install= {colorscheme = 'catppuccin-frappe'}}})
+	import'impatient'
+	lazy.setup({ spec = 'plugins', opts = { install = { colorscheme = 'catppuccin-frappe' } } })
 	if not lazy_bootstrapped and lazy_ok then
 		require('vim-opts')
 		require("lspconfigs")
 		require("keymaps")
-	-- else
-	-- 	lazy.sync()
-	-- 	vim.api.nvim_create_autocmd('User', {pattern='PackerComplete', command=[[lua PackerHasFinished()]]})
-	-- 	function PackerHasFinished()
-	-- 		vim.notify('Please close Neovim!')
-	-- 		print('Please close Neovim!')
-	-- 	end
 	end
 end
 
@@ -109,4 +104,3 @@ vim.api.nvim_create_autocmd(
 		pattern = '*'
 	}
 )
-
