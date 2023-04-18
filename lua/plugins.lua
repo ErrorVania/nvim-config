@@ -33,7 +33,6 @@ return {
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
 	{
 		'akinsho/bufferline.nvim',
-		tag = '*',
 		config = function(lp, opts) import 'configs.bufferline' end,
 		event = 'User IsEditing'
 	},
@@ -62,9 +61,9 @@ return {
 
 
 	'famiu/bufdelete.nvim',
-	{ 'folke/neodev.nvim',            event = 'LspAttach' },
-	{ 'goolord/alpha-nvim',           config = function(lp, opts) import 'configs.dashboardmenu' end },
-	{ 'folke/which-key.nvim',         config = function(lp, opts) import 'configs.whichkey' end },
+	{ 'folke/neodev.nvim', event = 'LspAttach' },
+	{ 'goolord/alpha-nvim', config = function(lp, opts) import 'configs.dashboardmenu' end },
+	{ 'folke/which-key.nvim', config = function(lp, opts) import 'configs.whichkey' end },
 
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -83,7 +82,7 @@ return {
 		config = true,
 		event = 'User IsEditing'
 	},
-	{ 'akinsho/toggleterm.nvim', tag = '*',                                 config = function(lp, opts) import 'configs.terminal' end },
+	{ 'akinsho/toggleterm.nvim', config = function(lp, opts) import 'configs.terminal' end },
 	{
 		'williamboman/mason.nvim',
 		config = function(lp, opts) import 'configs.mason' end
@@ -96,7 +95,7 @@ return {
 	},
 
 	'mfussenegger/nvim-dap',
-	{ "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	'jay-babu/mason-nvim-dap.nvim',
 
 	{
@@ -108,7 +107,6 @@ return {
 
 	{
 		'akinsho/git-conflict.nvim',
-		tag = '*',
 		config = true,
 		event = 'User InGitRepo'
 	},
@@ -187,7 +185,8 @@ return {
 						t.load_theme()
 					end)
 				end)
-		end
+		end,
+		priority = 999
 	},
 	'navarasu/onedark.nvim',
 	{
