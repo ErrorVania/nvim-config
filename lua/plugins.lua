@@ -36,9 +36,9 @@ return {
 
 
 	'famiu/bufdelete.nvim',
-	{ 'folke/neodev.nvim', event = 'LspAttach' },
-	{ 'goolord/alpha-nvim', config = function(lp, opts) import 'configs.dashboardmenu' end },
-	{ 'folke/which-key.nvim', config = function(lp, opts) import 'configs.whichkey' end },
+	{ 'folke/neodev.nvim',            event = 'LspAttach' },
+	{ 'goolord/alpha-nvim',           config = function(lp, opts) import 'configs.dashboardmenu' end },
+	{ 'folke/which-key.nvim',         config = function(lp, opts) import 'configs.whichkey' end },
 
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -70,7 +70,7 @@ return {
 	},
 
 	'mfussenegger/nvim-dap',
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	{ "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
 	'jay-babu/mason-nvim-dap.nvim',
 
 	{
@@ -122,12 +122,12 @@ return {
 	},
 
 	{ 'ray-x/lsp_signature.nvim', event = 'LspAttach' },
-	{ 'RishabhRD/nvim-cheat.sh',  requires = { 'RishabhRD/popfix' } },
+	{ 'RishabhRD/nvim-cheat.sh',  dependencies = { 'RishabhRD/popfix' }, lazy = true, cmd = 'Cheat' },
 	'mbbill/undotree',
 	{
 		'folke/todo-comments.nvim',
 		requires = 'nvim-lua/plenary.nvim',
-		event = 'BufEnter',
+		event = 'VeryLazy',
 		config = true
 	},
 	'stevearc/dressing.nvim',
@@ -147,7 +147,7 @@ return {
 	},
 
 	{ 'fgheng/winbar.nvim' },
-	{ 'shaunsingh/nord.nvim' },
+	{ 'shaunsingh/nord.nvim', lazy = true },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -163,7 +163,7 @@ return {
 		end,
 		priority = 999
 	},
-	'navarasu/onedark.nvim',
+	{ 'navarasu/onedark.nvim', lazy = true },
 	{
 		'karb94/neoscroll.nvim', config = true
 	}
