@@ -3,7 +3,6 @@ return {
 		'lewis6991/impatient.nvim',
 		lazy = false,
 		priority = 1000,
-		config = function(lp, opts) require 'impatient' end
 	},
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
 	{
