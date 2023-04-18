@@ -44,7 +44,12 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = { { 'HiPhish/nvim-ts-rainbow2', after = 'nvim-treesitter' },
 			{ 'windwp/nvim-ts-autotag',   after = 'nvim-treesitter' } },
-		config = function(lp, opts) import 'configs.treesitter' end
+		config = function(lp, opts) import 'configs.treesitter' end,
+		build = function()
+			import('nvim-treesitter.install', function(t)
+				t.update{}
+			end)
+		end
 	},
 
 	{
