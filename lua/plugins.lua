@@ -17,20 +17,20 @@ return {
 		config = function(lp, opts) import 'configs.statusline' end
 	},
 
-	'nvim-telescope/telescope-file-browser.nvim',
-	'nvim-telescope/telescope-project.nvim',
-	'nvim-telescope/telescope-ui-select.nvim',
 
-	{
-		'nvim-telescope/telescope-fzf-native.nvim',
-		build =
-		'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-	},
+
+
 
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			{ 'nvim-telescope/telescope-file-browser.nvim', lazy = true },
+			{ 'nvim-telescope/telescope-project.nvim',      lazy = true },
+			{ 'nvim-telescope/telescope-ui-select.nvim',    lazy = true },
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false }
+		},
 		config = function(lp, opts) import 'configs.telescope' end
 	},
 
