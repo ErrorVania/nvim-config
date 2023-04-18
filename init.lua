@@ -28,7 +28,7 @@ local lazy_ok, lazy = pcall(require, 'lazy')
 if lazy_ok then
 	-- require('plugins')
 	vim.g.mapleader = ' '
-	lazy.setup('plugins')
+	lazy.setup({spec = 'plugins', opts = { install= {colorscheme = 'catppuccin-frappe'}}})
 	if not lazy_bootstrapped and lazy_ok then
 		require('vim-opts')
 		require("lspconfigs")
