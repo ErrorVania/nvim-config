@@ -23,52 +23,46 @@ local function _edit_config_files()
 end
 
 import('which-key', function(wk)
-	wk.setup{
+	wk.setup {
 		window = {
 			border = 'single'
 		}
 	}
 
 	wk.register(
-	{
-		f = {
-			name = "Find",
-			f = { "<cmd>Telescope find_files<cr>", "Find File" },
-			g = { "<cmd>Telescope git_files<cr>", "Git Files" },
-			h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-			p = { "<cmd>Telescope project<cr>", "Projects" },
-			b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
-			c = { require'configs.themepicker'.run, "Colorschemes" }
-		},
-		l = {
-			name = "LSP",
-			d = { vim.lsp.buf.declaration, 'Go to Declaration' },
-			D = { vim.lsp.buf.definition, 'Go to Definition' },
-			r = { vim.lsp.buf.references, 'Go to References' },
-			R = { vim.lsp.buf.rename, 'Rename' },
-			f = { vim.lsp.buf.format, 'Format' },
-			a = { vim.lsp.buf.code_action, 'Code Action'}
-		},
-		g = {
-			name = "Git",
-			g = { _lazygit_toggle, 'LazyGit' },
-		},
-		u = { '<cmd>UndotreeToggle<cr>', "UndoTree" },
-		N = {
-			name = 'Neovim',
-			c = { _edit_config_files, 'Edit all config files' },
-			p = {
-				name = 'Packer',
-				c = { '<cmd>PackerCompile<cr>', 'Compile' },
-				s = { '<cmd>PackerSync<cr>', 'Sync' },
-				i = { '<cmd>PackerInstall<cr>', 'Install' },
-				u = { '<cmd>PackerUpdate<cr>', 'Update' },
+		{
+			f = {
+				name = "Find",
+				f = { "<cmd>Telescope find_files<cr>", "Find File" },
+				g = { "<cmd>Telescope git_files<cr>", "Git Files" },
+				h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
+				p = { "<cmd>Telescope project<cr>", "Projects" },
+				b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
+				c = { require 'configs.themepicker'.run, "Colorschemes" }
 			},
-			m = { '<cmd>Mason<cr>', 'Mason' }
+			l = {
+				name = "LSP",
+				d = { vim.lsp.buf.declaration, 'Go to Declaration' },
+				D = { vim.lsp.buf.definition, 'Go to Definition' },
+				r = { vim.lsp.buf.references, 'Go to References' },
+				R = { vim.lsp.buf.rename, 'Rename' },
+				f = { vim.lsp.buf.format, 'Format' },
+				a = { vim.lsp.buf.code_action, 'Code Action' }
+			},
+			g = {
+				name = "Git",
+				g = { _lazygit_toggle, 'LazyGit' },
+			},
+			u = { '<cmd>UndotreeToggle<cr>', "UndoTree" },
+			N = {
+				name = 'Neovim',
+				c = { _edit_config_files, 'Edit all config files' },
+				L = { '<cmd>Lazy<cr>', 'Lazy' },
+				m = { '<cmd>Mason<cr>', 'Mason' }
+			},
+			e = { function() import('nvim-tree.api', function(n) n.tree.toggle {} end) end, 'Open NvimTree' },
+			c = { '<cmd>Bdelete<cr>', 'Close Buffer' }
 		},
-		e = { function() import('nvim-tree.api', function(n) n.tree.toggle{} end) end, 'Open NvimTree'},
-		c = {'<cmd>Bdelete<cr>', 'Close Buffer'}
-	},
-	{ prefix = "<leader>" }
-)
+		{ prefix = "<leader>" }
+	)
 end)
