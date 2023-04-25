@@ -25,13 +25,14 @@ import('lualine', function(lualine)
 			},
 			globalstatus = true,
 			section_separators = { left = '', right = '' },
-			component_separators = { left = '|', right = '|' },
+			component_separators = { left = '', right = '' },
 			-- theme = 'nord'
 		},
 		sections = {
 			lualine_a = { mode },
 			lualine_b = { 'branch' },
 			lualine_c = {
+				'filename',
 				{
 					'diff',
 					symbols = {
