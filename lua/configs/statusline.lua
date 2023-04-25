@@ -1,24 +1,23 @@
+local function getlsps()
+	local names = {}
+	local clients = vim.lsp.get_active_clients { bufnr = vim.api.nvim_get_current_buf() }
+
+	for _, lsp in ipairs(clients) do
+		table.insert(names, lsp.name)
+	end
+
+	if #names == 0 then
+		return "No LSP"
+	end
+
+	return '[' .. table.concat(names, ", ") .. ']'
+end
+
+local function mode()
+	return ""
+end
+
 import('lualine', function(lualine)
-
-	local function getlsps()
-		local names = {}
-		local clients = vim.lsp.get_active_clients { bufnr = vim.api.nvim_get_current_buf() }
-
-		for _, lsp in ipairs(clients) do
-			table.insert(names, lsp.name)
-		end
-
-		if #names == 0 then
-			return "No LSP"
-		end
-
-		return '[' .. table.concat(names, ", ") .. ']'
-	end
-
-	local function mode()
-		return ""
-	end
-
 	lualine.setup {
 		options = {
 			disabled_filetypes = {
