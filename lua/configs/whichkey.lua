@@ -10,6 +10,9 @@ local function _lazygit_toggle()
 			on_open = function(t)
 				vim.cmd("startinsert!")
 				vim.api.nvim_buf_set_keymap(t.bufnr, "t", "<esc>", "<esc>", { noremap = true, silent = true })
+			end,
+			on_close = function(t)
+				vim.cmd("bufdo e!") -- reload all buffers to reflect git changes
 			end
 		})
 		lazygit:toggle()
