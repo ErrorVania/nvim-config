@@ -28,7 +28,7 @@ return {
 			{ 'nvim-telescope/telescope-file-browser.nvim', lazy = true },
 			{ 'nvim-telescope/telescope-project.nvim',      lazy = true },
 			{ 'nvim-telescope/telescope-ui-select.nvim',    lazy = true },
-			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false }
+			{ 'nvim-telescope/telescope-fzf-native.nvim',   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false }
 		},
 		config = function(lp, opts) import 'configs.telescope' end
 	},
@@ -46,7 +46,7 @@ return {
 		config = function(lp, opts) import 'configs.treesitter' end,
 		build = function()
 			import('nvim-treesitter.install', function(t)
-				t.update{}
+				t.update {}
 			end)
 		end
 	},
