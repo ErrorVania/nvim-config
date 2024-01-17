@@ -97,11 +97,8 @@ return {
 	{
 		'lukas-reineke/indent-blankline.nvim',
 		event = 'BufWinEnter',
-		config = true,
-		opts = {
-			show_end_of_line = true,
-			space_char_blankline = ' '
-		}
+		main = 'ibl',
+		config = true
 	},
 
 	{
