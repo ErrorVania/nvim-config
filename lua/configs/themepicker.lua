@@ -7,15 +7,19 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local theme = require 'configs.theme'
 
-local rtp = vim.api.nvim_list_runtime_paths()
-local themes = {}
 
-for n = 1, #rtp do
-	local files = vim.fn.split(vim.fn.globpath(rtp[n] .. '/colors', '*.vim'), '\n')
-	for m = 1, #files do
-		local themename = files[m]
-		table.insert(themes, themename:match("^.+/(.+)%.[^.]+$"))
+local function list_themes()
+	local themes = {}
+	local rtp = vim.api.nvim_list_runtime_paths()
+	for n = 1, #rtp do
+		local files = vim.fn.split(vim.fn.globpath(rtp[n] .. '/colors', '*.vim'), '\n')
+		for m = 1, #files do
+			local themename = files[m]
+			table.insert(themes, themename:match("^.+/(.+)%.[^.]+$"))
+		end
 	end
+
+	return themes
 end
 
 -- our picker function: colors
@@ -24,7 +28,7 @@ local colors = function(opts)
 	pickers.new(opts, {
 		prompt_title = 'Themes',
 		finder = finders.new_table {
-			results = themes
+			results = list_themes()
 		},
 		sorter = conf.generic_sorter(opts),
 		attach_mappings = function(prompt_bufnr, map)
