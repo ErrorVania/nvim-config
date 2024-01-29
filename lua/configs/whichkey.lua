@@ -19,16 +19,6 @@ local function _lazygit_toggle()
 	end
 end
 
-local function _edit_config_files()
-	local tele_ok, builtin = pcall(require, 'telescope.builtin')
-	if tele_ok then
-		builtin.find_files {
-			cwd = vim.loop.fs_realpath(vim.fn.stdpath('config')),
-			follow = true
-		}
-	end
-end
-
 import('which-key', function(wk)
 	wk.setup {
 		window = {
@@ -36,15 +26,19 @@ import('which-key', function(wk)
 		}
 	}
 
+	local nvimtree = require('nvim-tree.api')
+	local tele = require('telescope.builtin')
+
 	wk.register(
 		{
 			f = {
 				name = "Find",
-				f = { "<cmd>Telescope find_files<cr>", "Find File" },
-				g = { "<cmd>Telescope git_files<cr>", "Git Files" },
-				h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
+				f = { tele.find_files, "Find File" },
+				g = { tele.git_files, "Git Files" },
+				h = { tele.oldfiles, "Recent Files" },
 				p = { "<cmd>Telescope project<cr>", "Projects" },
-				b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
+				b = { tele.buffers, "Buffers" },
+				B = { "<cmd>Telescope file_browser<cr>", "File Browser" },
 				c = { require 'configs.themepicker'.run, "Colorschemes" }
 			},
 			l = {
@@ -59,15 +53,17 @@ import('which-key', function(wk)
 			g = {
 				name = "Git",
 				g = { _lazygit_toggle, 'LazyGit' },
+				f = { tele.git_files, "Git Files" },
+				b = { tele.git_branches, 'Git Branches'},
+				s = { tele.git_status, 'Git Status'}
 			},
 			u = { '<cmd>UndotreeToggle<cr>', "UndoTree" },
 			N = {
 				name = 'Neovim',
-				c = { _edit_config_files, 'Edit all config files' },
 				L = { '<cmd>Lazy<cr>', 'Lazy' },
 				m = { '<cmd>Mason<cr>', 'Mason' }
 			},
-			e = { function() import('nvim-tree.api', function(n) n.tree.toggle {} end) end, 'Open NvimTree' },
+			e = { nvimtree.tree.toggle, 'Open NvimTree' },
 			c = { '<cmd>Bdelete<cr>', 'Close Buffer' }
 		},
 		{ prefix = "<leader>" }

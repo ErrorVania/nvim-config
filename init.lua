@@ -24,6 +24,28 @@ local bootstrap_lazy = function()
 	return false
 end
 
+local function check_git_repo()
+	local f = vim.fs.find('.git', { type = 'directory' })
+	if f ~= {} then
+		vim.api.nvim_exec_autocmds('User', { pattern = 'InGitRepo' })
+		return true
+	end
+end
+
+local function is_tmux_sess()
+	if os.getenv('TMUX') then
+		vim.api.nvim_exec_autocmds('User', { pattern = 'IsTmuxSession' })
+		return true
+	end
+end
+
+local function is_editing()
+	if vim.fn.argc() > 0 or vim.o.insertmode or vim.o.modifiable then
+		vim.api.nvim_exec_autocmds('User', { pattern = 'IsEditing' })
+		return true
+	end
+end
+
 local lazy_bootstrapped = bootstrap_lazy()
 
 local lazy_ok, lazy = pcall(require, 'lazy')
@@ -33,8 +55,8 @@ if lazy_ok then
 	lazy.setup({ spec = 'plugins', opts = { install = { colorscheme = 'catppuccin-frappe' } } })
 	if not lazy_bootstrapped and lazy_ok then
 		require('vim-opts')
-		require("lspconfigs")
-		require("keymaps")
+		require('lspconfigs')
+		require('keymaps')
 	end
 end
 
@@ -54,45 +76,23 @@ vim.api.nvim_create_autocmd(
 	}
 )
 
-local function check_git_repo()
-	local f = vim.fs.find('.git', { type = 'directory' })
-	if f ~= {} then
-		vim.api.nvim_exec_autocmds('User', { pattern = 'InGitRepo' })
-		return true
-	end
-end
-
-local function is_tmux_sess()
-	if os.getenv('TMUX') then
-		vim.api.nvim_exec_autocmds("User", { pattern = "IsTmuxSession" })
-		return true
-	end
-end
-
 vim.api.nvim_create_autocmd(
-	{ "VimEnter", "DirChanged" },
+	{ 'VimEnter', 'DirChanged' },
 	{ callback = function() vim.schedule(check_git_repo) end }
 )
 
 vim.api.nvim_create_autocmd(
-	{ "VimEnter" },
+	{ 'VimEnter' },
 	{ callback = function() vim.schedule(is_tmux_sess) end }
 )
 
-local function is_editing()
-	if vim.fn.argc() > 0 or vim.o.insertmode or vim.o.modifiable then
-		vim.api.nvim_exec_autocmds("User", { pattern = "IsEditing" })
-		return true
-	end
-end
-
 vim.api.nvim_create_autocmd(
-	{ "VimEnter", "FileType" },
+	{ 'VimEnter', 'FileType' },
 	{
 		callback = function()
 			local blacklist = {
-				"mason",
-				"packer"
+				'mason',
+				'packer'
 			}
 			for _, value in ipairs(blacklist) do
 				if vim.bo.filetype == value then

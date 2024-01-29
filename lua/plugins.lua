@@ -37,7 +37,17 @@ return {
 	'famiu/bufdelete.nvim',
 	{ 'folke/neodev.nvim',            event = 'LspAttach' },
 	{ 'goolord/alpha-nvim',           config = function(lp, opts) import 'configs.dashboardmenu' end },
-	{ 'folke/which-key.nvim',         config = function(lp, opts) import 'configs.whichkey' end },
+	{
+		'folke/which-key.nvim',
+		event = 'VeryLazy',
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		config = function(lp, opts)
+			require 'configs.whichkey'
+		end
+	},
 
 	{
 		'nvim-treesitter/nvim-treesitter',

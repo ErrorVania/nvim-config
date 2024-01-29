@@ -30,6 +30,18 @@ import('telescope', function(telescope)
 			oldfiles = require('telescope.themes').get_dropdown {
 				previewer = false
 			},
+			buffers = require('telescope.themes').get_dropdown {
+				previewer = false
+			},
+			git_files = require('telescope.themes').get_dropdown {
+				previewer = false
+			},
+			git_branches = require('telescope.themes').get_dropdown {
+				previewer = true
+			},
+			git_status = require('telescope.themes').get_dropdown {
+				previewer = true
+			},
 			colorscheme = require('telescope.themes').get_dropdown {
 				previewer = false,
 				prompt_prefix = ' ',
