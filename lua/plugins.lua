@@ -5,11 +5,7 @@ return {
 		priority = 1000,
 	},
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
-	{
-		'akinsho/bufferline.nvim',
-		config = function(lp, opts) import 'configs.bufferline' end,
-		event = 'User IsEditing'
-	},
+
 
 	{
 		'nvim-lualine/lualine.nvim',

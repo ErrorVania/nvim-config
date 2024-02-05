@@ -1,5 +1,8 @@
-import('bufferline', function(bufferline)
-	bufferline.setup {
+return {
+	'akinsho/bufferline.nvim',
+	event = 'User IsEditing',
+	config = true,
+	opts = {
 		options = {
 			offsets = {
 				{
@@ -31,5 +34,4 @@ import('bufferline', function(bufferline)
 			separator_style = 'thin'
 		}
 	}
-end)
-
+}
