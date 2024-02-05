@@ -35,7 +35,11 @@ return {
 
 
 	'famiu/bufdelete.nvim',
-	{ 'folke/neodev.nvim',            event = 'LspAttach' },
+	{
+		'folke/neodev.nvim',
+		event = 'LspAttach',
+		config = true
+	},
 	{ 'goolord/alpha-nvim',           config = function(lp, opts) import 'configs.dashboardmenu' end },
 	{
 		'folke/which-key.nvim',

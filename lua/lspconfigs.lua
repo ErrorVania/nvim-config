@@ -1,5 +1,3 @@
-import('neodev', function(n) n.setup{} end)
-
 local caps = require('cmp_nvim_lsp').default_capabilities()
 local handlers = {
 	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
