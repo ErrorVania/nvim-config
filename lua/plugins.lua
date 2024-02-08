@@ -1,17 +1,7 @@
 return {
-	{
-		'lewis6991/impatient.nvim',
-		lazy = false,
-		priority = 1000,
-	},
-	{
-		'kyazdani42/nvim-web-devicons',
-		lazy = true
-	},
-	{
-		'nvim-lualine/lualine.nvim',
-		config = function(lp, opts) import 'configs.statusline' end
-	},
+	{ 'lewis6991/impatient.nvim', lazy = false, priority = 1000 },
+	{ 'kyazdani42/nvim-web-devicons', lazy = true },
+	{ 'nvim-lualine/lualine.nvim', config = function(lp, opts) import 'configs.statusline' end },
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
@@ -25,7 +15,6 @@ return {
 		config = function(lp, opts) import 'configs.telescope' end
 	},
 
-
 	'famiu/bufdelete.nvim',
 	{
 		'folke/which-key.nvim',
@@ -38,11 +27,12 @@ return {
 			require 'configs.whichkey'
 		end
 	},
-
 	{
 		'nvim-treesitter/nvim-treesitter',
-		dependencies = { { 'HiPhish/nvim-ts-rainbow2', after = 'nvim-treesitter' },
-			{ 'windwp/nvim-ts-autotag',   after = 'nvim-treesitter' } },
+		dependencies = {
+			{ 'HiPhish/nvim-ts-rainbow2', after = 'nvim-treesitter' },
+			{ 'windwp/nvim-ts-autotag',   after = 'nvim-treesitter' }
+		},
 		config = function(lp, opts) import 'configs.treesitter' end,
 		build = function()
 			import('nvim-treesitter.install', function(t)
@@ -50,39 +40,22 @@ return {
 			end)
 		end
 	},
-
 	{
 		'nvim-tree/nvim-tree.lua',
 		config = function(lp, opts) import 'configs.nvimtree' end
 	},
-
 	{
 		'numToStr/Comment.nvim',
 		config = true,
 		event = 'User IsEditing'
 	},
 	{ 'akinsho/toggleterm.nvim', config = function(lp, opts) import 'configs.terminal' end },
-	{
-		'williamboman/mason.nvim',
-		config = function(lp, opts) import 'configs.mason' end
-	},
-
+	{ 'williamboman/mason.nvim', config = function(lp, opts) import 'configs.mason' end },
 	'mfussenegger/nvim-dap',
 	{ "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
 	'jay-babu/mason-nvim-dap.nvim',
-
-	{
-		'lewis6991/gitsigns.nvim',
-		config = true,
-		event = 'User InGitRepo',
-		after = 'nvim-notify'
-	},
-
-	{
-		'akinsho/git-conflict.nvim',
-		config = true,
-		event = 'User InGitRepo'
-	},
+	{ 'lewis6991/gitsigns.nvim', config = true, event = 'User InGitRepo', after = 'nvim-notify' },
+	{ 'akinsho/git-conflict.nvim', config = true, event = 'User InGitRepo' },
 	{
 		'lukas-reineke/indent-blankline.nvim',
 		event = 'BufWinEnter',
@@ -109,7 +82,7 @@ return {
 		config = function(lp, opts) require('configs.completion').setup_autopairs() end
 	},
 
-	{ 'RishabhRD/nvim-cheat.sh',        dependencies = { 'RishabhRD/popfix' },                             lazy = true, cmd = 'Cheat' },
+	{ 'RishabhRD/nvim-cheat.sh', dependencies = { 'RishabhRD/popfix' }, lazy = true, cmd = 'Cheat' },
 	'mbbill/undotree',
 	{
 		'folke/todo-comments.nvim',
@@ -119,13 +92,9 @@ return {
 	},
 	'stevearc/dressing.nvim',
 	{ 'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession' },
-	{ 'tiagovla/scope.nvim',            config = function() import('scope', function(s) s.setup() end) end },
-	{ 'rcarriga/nvim-notify',           config = function() vim.notify = require('notify') end },
-	{
-		'RRethy/vim-illuminate',
-		event = 'BufEnter',
-		config = function(lp, opts) import 'configs.vimilluminate' end
-	},
+	{ 'tiagovla/scope.nvim', config = function() import('scope', function(s) s.setup() end) end },
+	{ 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end },
+	{ 'RRethy/vim-illuminate', event = 'BufEnter', config = function(lp, opts) import 'configs.vimilluminate' end },
 	{ 'fgheng/winbar.nvim' },
 	{ 'shaunsingh/nord.nvim', lazy = true },
 	{
@@ -144,7 +113,5 @@ return {
 		priority = 999
 	},
 	{ 'navarasu/onedark.nvim', lazy = true },
-	{
-		'karb94/neoscroll.nvim', config = true
-	}
+	{ 'karb94/neoscroll.nvim', config = true }
 }

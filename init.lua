@@ -85,7 +85,6 @@ autocmds.define_autocmds{
 }
 
 -- vim options
-vim.opt.timeoutlen = 0
 vim.wo.number = true
 vim.g.encoding = 'UTF-8'
 vim.opt.termguicolors = true
