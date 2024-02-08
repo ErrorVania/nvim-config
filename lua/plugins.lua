@@ -50,10 +50,19 @@ return {
 		event = 'User IsEditing'
 	},
 	{ 'akinsho/toggleterm.nvim', config = function(lp, opts) import 'configs.terminal' end },
-	{ 'williamboman/mason.nvim', config = function(lp, opts) import 'configs.mason' end },
-	'mfussenegger/nvim-dap',
-	{ "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
-	'jay-babu/mason-nvim-dap.nvim',
+	{
+		'williamboman/mason.nvim',
+		config = true,
+		opts = {
+			ui = {
+				border = 'none'
+			},
+			providers = {
+				'mason.providers.client',
+				'mason.providers.registry-api'
+			}
+		}
+	},
 	{ 'lewis6991/gitsigns.nvim', config = true, event = 'User InGitRepo', after = 'nvim-notify' },
 	{ 'akinsho/git-conflict.nvim', config = true, event = 'User InGitRepo' },
 	{
