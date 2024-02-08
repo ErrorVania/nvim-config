@@ -117,5 +117,18 @@ return {
 		priority = 999
 	},
 	{ 'navarasu/onedark.nvim', lazy = true },
-	{ 'karb94/neoscroll.nvim', config = true }
+	{ 'karb94/neoscroll.nvim', config = true },
+	{
+		'jedrzejboczar/toggletasks.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim',
+			'akinsho/toggleterm.nvim',
+			'nvim-telescope/telescope.nvim/',
+		},
+		config = function()
+			local t = require('toggletasks')
+			t.setup{}
+			require('telescope').load_extension('toggletasks')
+		end
+	}
 }
