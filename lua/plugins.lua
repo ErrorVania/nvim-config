@@ -4,18 +4,14 @@ return {
 		lazy = false,
 		priority = 1000,
 	},
-	{ 'kyazdani42/nvim-web-devicons', lazy = true },
-
-
+	{
+		'kyazdani42/nvim-web-devicons',
+		lazy = true
+	},
 	{
 		'nvim-lualine/lualine.nvim',
 		config = function(lp, opts) import 'configs.statusline' end
 	},
-
-
-
-
-
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
@@ -31,11 +27,6 @@ return {
 
 
 	'famiu/bufdelete.nvim',
-	{
-		'folke/neodev.nvim',
-		event = 'LspAttach',
-		config = true
-	},
 	{
 		'folke/which-key.nvim',
 		event = 'VeryLazy',
@@ -76,12 +67,6 @@ return {
 		config = function(lp, opts) import 'configs.mason' end
 	},
 
-	{
-		'williamboman/mason-lspconfig.nvim',
-		dependencies = { 'neovim/nvim-lspconfig' },
-		config = true
-	},
-
 	'mfussenegger/nvim-dap',
 	{ "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
 	'jay-babu/mason-nvim-dap.nvim',
@@ -99,17 +84,11 @@ return {
 		event = 'User InGitRepo'
 	},
 	{
-		'folke/trouble.nvim',
-		event = 'LspAttach',
-		config = true
-	},
-	{
 		'lukas-reineke/indent-blankline.nvim',
 		event = 'BufWinEnter',
 		main = 'ibl',
 		config = true
 	},
-
 	{
 		'hrsh7th/nvim-cmp',
 		dependencies = {
@@ -123,7 +102,6 @@ return {
 		config = function(lp, opts) require('configs.completion').configure_cmp() end,
 		--event = 'User IsEditing'
 	},
-
 	{
 		'windwp/nvim-autopairs',
 		requires = { 'hrsh7th/nvim-cmp' },
@@ -131,8 +109,7 @@ return {
 		config = function(lp, opts) require('configs.completion').setup_autopairs() end
 	},
 
-	{ 'ray-x/lsp_signature.nvim', event = 'LspAttach' },
-	{ 'RishabhRD/nvim-cheat.sh',  dependencies = { 'RishabhRD/popfix' }, lazy = true, cmd = 'Cheat' },
+	{ 'RishabhRD/nvim-cheat.sh',        dependencies = { 'RishabhRD/popfix' },                             lazy = true, cmd = 'Cheat' },
 	'mbbill/undotree',
 	{
 		'folke/todo-comments.nvim',
@@ -149,13 +126,6 @@ return {
 		event = 'BufEnter',
 		config = function(lp, opts) import 'configs.vimilluminate' end
 	},
-	{
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig",
-		event =
-		'LspAttach'
-	},
-
 	{ 'fgheng/winbar.nvim' },
 	{ 'shaunsingh/nord.nvim', lazy = true },
 	{

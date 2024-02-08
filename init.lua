@@ -104,9 +104,6 @@ vim.cmd("set completeopt=menu,menuone,noselect")
 
 require('configs.theme').load_theme()
 
--- configure lsp
-require('lspconfigs')
-
 -- keymaps
 vim.keymap.set('n', '<Space>', '', {}) --leader
 
