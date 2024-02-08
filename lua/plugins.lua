@@ -44,11 +44,7 @@ return {
 		'nvim-tree/nvim-tree.lua',
 		config = function(lp, opts) import 'configs.nvimtree' end
 	},
-	{
-		'numToStr/Comment.nvim',
-		config = true,
-		event = 'User IsEditing'
-	},
+	{ 'numToStr/Comment.nvim', config = true, event = 'User IsEditing' },
 	{ 'akinsho/toggleterm.nvim', config = function(lp, opts) import 'configs.terminal' end },
 	{
 		'williamboman/mason.nvim',
@@ -82,7 +78,6 @@ return {
 			{ 'L3MON4D3/LuaSnip' },
 		},
 		config = function(lp, opts) require('configs.completion').configure_cmp() end,
-		--event = 'User IsEditing'
 	},
 	{
 		'windwp/nvim-autopairs',
