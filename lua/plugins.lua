@@ -65,7 +65,12 @@ return {
 		'lukas-reineke/indent-blankline.nvim',
 		event = 'BufWinEnter',
 		main = 'ibl',
-		config = true
+		config = true,
+		opts = {
+			scope = {
+				enabled = false
+			}
+		}
 	},
 	{
 		'hrsh7th/nvim-cmp',
