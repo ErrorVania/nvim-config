@@ -1,7 +1,7 @@
 return {
 	{ 'lewis6991/impatient.nvim', lazy = false, priority = 1000 },
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
-	{ 'nvim-lualine/lualine.nvim', config = function(lp, opts) import 'configs.statusline' end },
+	{ 'nvim-lualine/lualine.nvim', config = function() import 'configs.statusline' end },
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
@@ -12,7 +12,7 @@ return {
 			{ 'nvim-telescope/telescope-ui-select.nvim',    lazy = true },
 			{ 'nvim-telescope/telescope-fzf-native.nvim',   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false }
 		},
-		config = function(lp, opts) import 'configs.telescope' end
+		config = function() import 'configs.telescope' end
 	},
 
 	'famiu/bufdelete.nvim',
@@ -23,7 +23,7 @@ return {
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		config = function(lp, opts)
+		config = function()
 			require 'configs.whichkey'
 		end
 	},
@@ -33,7 +33,7 @@ return {
 			{ 'HiPhish/nvim-ts-rainbow2', after = 'nvim-treesitter' },
 			{ 'windwp/nvim-ts-autotag',   after = 'nvim-treesitter' }
 		},
-		config = function(lp, opts) import 'configs.treesitter' end,
+		config = function() import 'configs.treesitter' end,
 		build = function()
 			import('nvim-treesitter.install', function(t)
 				t.update {}
@@ -42,10 +42,10 @@ return {
 	},
 	{
 		'nvim-tree/nvim-tree.lua',
-		config = function(lp, opts) import 'configs.nvimtree' end
+		config = function() import 'configs.nvimtree' end
 	},
 	{ 'numToStr/Comment.nvim', config = true, event = 'User IsEditing' },
-	{ 'akinsho/toggleterm.nvim', config = function(lp, opts) import 'configs.terminal' end },
+	{ 'akinsho/toggleterm.nvim', config = function() import 'configs.terminal' end },
 	{
 		'williamboman/mason.nvim',
 		config = true,
@@ -82,13 +82,13 @@ return {
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'L3MON4D3/LuaSnip' },
 		},
-		config = function(lp, opts) require('configs.completion').configure_cmp() end,
+		config = function() require('configs.completion').configure_cmp() end,
 	},
 	{
 		'windwp/nvim-autopairs',
 		requires = { 'hrsh7th/nvim-cmp' },
 		after = 'nvim-cmp',
-		config = function(lp, opts) require('configs.completion').setup_autopairs() end
+		config = function() require('configs.completion').setup_autopairs() end
 	},
 
 	{ 'RishabhRD/nvim-cheat.sh', dependencies = { 'RishabhRD/popfix' }, lazy = true, cmd = 'Cheat' },
@@ -103,7 +103,7 @@ return {
 	{ 'christoomey/vim-tmux-navigator', event = 'User IsTmuxSession' },
 	{ 'tiagovla/scope.nvim', config = function() import('scope', function(s) s.setup() end) end },
 	{ 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end },
-	{ 'RRethy/vim-illuminate', event = 'BufEnter', config = function(lp, opts) import 'configs.vimilluminate' end },
+	{ 'RRethy/vim-illuminate', event = 'BufEnter', config = function() import 'configs.vimilluminate' end },
 	{ 'fgheng/winbar.nvim' },
 	{ 'shaunsingh/nord.nvim', lazy = true },
 	{
