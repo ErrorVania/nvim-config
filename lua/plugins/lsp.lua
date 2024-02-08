@@ -29,9 +29,10 @@ return {
 	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = { 'neovim/nvim-lspconfig' },
-		config = function(lp, opts)
-			local mlsp = require('mason-lspconfig')
-			mlsp.setup_handlers {
+		config = true,
+		opts = {
+			ensure_installed = { 'lua_ls' },
+			handlers = {
 				function(server_name)
 					require('lspconfig')[server_name].setup {
 						capabilities = caps,
@@ -69,6 +70,6 @@ return {
 					}
 				end
 			}
-		end
+		}
 	},
 }
