@@ -56,7 +56,7 @@ return {
 	},
 
 	{ 'RishabhRD/nvim-cheat.sh', dependencies = { 'RishabhRD/popfix' }, lazy = true, cmd = 'Cheat' },
-	'mbbill/undotree',
+	{'mbbill/undotree', event = 'VeryLazy' },
 	{
 		'folke/todo-comments.nvim',
 		requires = 'nvim-lua/plenary.nvim',
@@ -85,6 +85,5 @@ return {
 		end,
 		priority = 999
 	},
-	{ 'navarasu/onedark.nvim', lazy = true },
 	{ 'karb94/neoscroll.nvim', config = true, event = 'VeryLazy' },
 }
