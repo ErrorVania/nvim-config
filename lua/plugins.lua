@@ -17,17 +17,6 @@ return {
 
 	'famiu/bufdelete.nvim',
 	{
-		'folke/which-key.nvim',
-		event = 'VeryLazy',
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		config = function()
-			require 'configs.whichkey'
-		end
-	},
-	{
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = {
 			{ 'HiPhish/nvim-ts-rainbow2', after = 'nvim-treesitter' },
