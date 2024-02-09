@@ -30,12 +30,13 @@ return {
 		local wk = require('which-key')
 		wk.setup {
 			window = {
-				border = 'single'
+				border = 'none'
 			}
 		}
 
 		local nvimtree = require('nvim-tree.api')
 		local tele = require('telescope.builtin')
+		local bufdel = require('bufdelete')
 
 		wk.register(
 			{
@@ -72,7 +73,7 @@ return {
 					m = { '<cmd>Mason<cr>', 'Mason' }
 				},
 				e = { nvimtree.tree.toggle, 'Open NvimTree' },
-				c = { '<cmd>Bdelete<cr>', 'Close Buffer' }
+				c = { function() bufdel.bufdelete(0, true) end, 'Close Buffer' }
 			},
 			{ prefix = "<leader>" }
 		)
