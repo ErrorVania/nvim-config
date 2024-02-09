@@ -46,13 +46,13 @@ return {
 			{ 'L3MON4D3/LuaSnip' },
 		},
 		event = 'VeryLazy',
-		config = function() require('configs.completion').configure_cmp() end,
+		config = require('configs.completion').configure_cmp,
 	},
 	{
 		'windwp/nvim-autopairs',
 		requires = { 'hrsh7th/nvim-cmp' },
 		after = 'nvim-cmp',
-		config = function() require('configs.completion').setup_autopairs() end
+		config = require('configs.completion').setup_autopairs
 	},
 
 	{ 'RishabhRD/nvim-cheat.sh', dependencies = { 'RishabhRD/popfix' }, lazy = true, cmd = 'Cheat' },
