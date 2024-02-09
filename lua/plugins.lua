@@ -1,7 +1,6 @@
 return {
 	{ 'lewis6991/impatient.nvim', lazy = false, priority = 1000 },
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
-	{ 'nvim-lualine/lualine.nvim', config = function() import 'configs.statusline' end },
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',

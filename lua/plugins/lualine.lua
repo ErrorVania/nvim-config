@@ -17,8 +17,10 @@ local function mode()
 	return ""
 end
 
-import('lualine', function(lualine)
-	lualine.setup {
+return {
+	'nvim-lualine/lualine.nvim',
+	config = true,
+	opts = {
 		options = {
 			disabled_filetypes = {
 				'alpha', 'help'
@@ -55,4 +57,4 @@ import('lualine', function(lualine)
 			lualine_z = {}
 		}
 	}
-end)
+}
