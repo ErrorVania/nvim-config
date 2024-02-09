@@ -1,21 +1,10 @@
 return {
 	{ 'lewis6991/impatient.nvim', lazy = false, priority = 1000 },
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
-	{
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.4',
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-			{ 'nvim-telescope/telescope-file-browser.nvim', lazy = true },
-			{ 'nvim-telescope/telescope-project.nvim',      lazy = true },
-			{ 'nvim-telescope/telescope-ui-select.nvim',    lazy = true },
-			{ 'nvim-telescope/telescope-fzf-native.nvim',   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false }
-		},
-		config = function() import 'configs.telescope' end
-	},
-	'famiu/bufdelete.nvim',
+	{'famiu/bufdelete.nvim', lazy = true },
 	{
 		'nvim-tree/nvim-tree.lua',
+		event = 'VeryLazy',
 		config = function() import 'configs.nvimtree' end
 	},
 	{ 'numToStr/Comment.nvim', config = true, event = 'User IsEditing' },
@@ -56,6 +45,7 @@ return {
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'L3MON4D3/LuaSnip' },
 		},
+		event = 'VeryLazy',
 		config = function() require('configs.completion').configure_cmp() end,
 	},
 	{
@@ -96,18 +86,5 @@ return {
 		priority = 999
 	},
 	{ 'navarasu/onedark.nvim', lazy = true },
-	{ 'karb94/neoscroll.nvim', config = true },
-	{
-		'jedrzejboczar/toggletasks.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'akinsho/toggleterm.nvim',
-			'nvim-telescope/telescope.nvim/',
-		},
-		config = function()
-			local t = require('toggletasks')
-			t.setup{}
-			require('telescope').load_extension('toggletasks')
-		end
-	}
+	{ 'karb94/neoscroll.nvim', config = true, event = 'VeryLazy' },
 }
