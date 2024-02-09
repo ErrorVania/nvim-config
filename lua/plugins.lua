@@ -13,21 +13,7 @@ return {
 		},
 		config = function() import 'configs.telescope' end
 	},
-
 	'famiu/bufdelete.nvim',
-	{
-		'nvim-treesitter/nvim-treesitter',
-		dependencies = {
-			{ 'HiPhish/nvim-ts-rainbow2', after = 'nvim-treesitter' },
-			{ 'windwp/nvim-ts-autotag',   after = 'nvim-treesitter' }
-		},
-		config = function() import 'configs.treesitter' end,
-		build = function()
-			import('nvim-treesitter.install', function(t)
-				t.update {}
-			end)
-		end
-	},
 	{
 		'nvim-tree/nvim-tree.lua',
 		config = function() import 'configs.nvimtree' end

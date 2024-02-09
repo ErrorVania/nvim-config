@@ -99,6 +99,9 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.pumheight = 10
 vim.opt.fillchars = 'eob: '
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 20
 vim.cmd("set completeopt=menu,menuone,noselect")
 
 require('configs.theme').load_theme()
